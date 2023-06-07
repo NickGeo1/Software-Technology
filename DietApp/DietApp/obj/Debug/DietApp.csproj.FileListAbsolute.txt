@@ -1,0 +1,14 @@
+C:\Users\Athena\source\repos\DietApp\DietApp\bin\Debug\DietApp.exe.config
+C:\Users\Athena\source\repos\DietApp\DietApp\bin\Debug\DietApp.exe
+C:\Users\Athena\source\repos\DietApp\DietApp\bin\Debug\DietApp.pdb
+C:\Users\Athena\source\repos\DietApp\DietApp\obj\Debug\DietApp.csproj.AssemblyReference.cache
+C:\Users\Athena\source\repos\DietApp\DietApp\obj\Debug\DietApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\Athena\source\repos\DietApp\DietApp\obj\Debug\DietApp.Form1.resources
+C:\Users\Athena\source\repos\DietApp\DietApp\obj\Debug\DietApp.Properties.Resources.resources
+C:\Users\Athena\source\repos\DietApp\DietApp\obj\Debug\DietApp.csproj.GenerateResource.cache
+C:\Users\Athena\source\repos\DietApp\DietApp\obj\Debug\DietApp.csproj.CoreCompileInputs.cache
+C:\Users\Athena\source\repos\DietApp\DietApp\obj\Debug\DietApp.exe
+C:\Users\Athena\source\repos\DietApp\DietApp\obj\Debug\DietApp.pdb
+C:\Users\Athena\source\repos\DietApp\DietApp\obj\Debug\DietApp.Form2.resources
+C:\Users\Athena\source\repos\DietApp\DietApp\obj\Debug\DietApp.Form3.resources
+C:\Users\Athena\source\repos\DietApp\DietApp\obj\Debug\DietApp.Form4.resources
