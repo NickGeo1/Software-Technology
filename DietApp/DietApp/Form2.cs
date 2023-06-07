@@ -27,7 +27,9 @@ namespace DietApp
             }
             else if (radioButton2.Checked)
             {
-
+                this.Close();
+                Form5 form5 = new Form5();
+                form5.Show();
             }
             else if(radioButton3.Checked)
             {   

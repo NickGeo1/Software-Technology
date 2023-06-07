@@ -485,8 +485,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Text = "MyDietPlan";
             this.ResumeLayout(false);
             this.PerformLayout();
 

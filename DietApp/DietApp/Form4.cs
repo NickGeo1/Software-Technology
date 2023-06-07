@@ -20,6 +20,9 @@ namespace DietApp
             textBox4.Text = id;
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
