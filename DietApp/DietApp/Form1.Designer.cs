@@ -65,7 +65,7 @@
             this.radioButton2.BackColor = System.Drawing.Color.Transparent;
             this.radioButton2.Font = new System.Drawing.Font("High Tower Text", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.Color.Firebrick;
-            this.radioButton2.Location = new System.Drawing.Point(310, 162);
+            this.radioButton2.Location = new System.Drawing.Point(360, 162);
             this.radioButton2.MaximumSize = new System.Drawing.Size(600, 128);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(127, 38);
