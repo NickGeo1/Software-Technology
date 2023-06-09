@@ -13,10 +13,14 @@ namespace DietApp
     public partial class Form1 : Form
     {   
         List<string> btn1 = new List<string>() { "enter (1).png", "enter.png" };
+        public static string user_type;
         
         public Form1()
         {
             InitializeComponent();
+            radioButton1.Checked = false; 
+            radioButton2.Checked= true;
+            panel1.Visible= false;
         }
 
 
@@ -24,6 +28,7 @@ namespace DietApp
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            user_type = radioButton1.Text;
             if (radioButton1.Checked)
             {
                 this.Hide();
@@ -64,5 +69,13 @@ namespace DietApp
             }
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+
+            }
+        }
     }
 }

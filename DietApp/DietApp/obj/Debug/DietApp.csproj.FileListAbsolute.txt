@@ -28,3 +28,4 @@ D:\Documents\GitHub\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.csproj
 D:\Documents\GitHub\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.csproj.CoreCompileInputs.cache
 D:\Documents\GitHub\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.exe
 D:\Documents\GitHub\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.pdb
+D:\Documents\GitHub\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.Form6.resources
