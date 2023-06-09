@@ -26,7 +26,7 @@ namespace DietApp
 
         private void maskedTextBox1_Enter(object sender, EventArgs e)
         {
-            if (maskedTextBox1.Text == "Enter SSN or Full Name")
+            if (maskedTextBox1.Text == "Enter SSN")
             {
                 maskedTextBox1.Text = "";
             }
@@ -36,7 +36,15 @@ namespace DietApp
         {
             if (string.IsNullOrWhiteSpace(maskedTextBox1.Text))
             {
-                maskedTextBox1.Text = "Enter SSN or Full Name";
+                maskedTextBox1.Text = "Enter SSN";
+            }
+        }
+
+        private void maskedTextBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(maskedTextBox1.Text, @"^\d+$"))
+            {
+                MessageBox.Show("Please enter numbers only");
             }
         }
     }

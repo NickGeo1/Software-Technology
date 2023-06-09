@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DietApp
 {
@@ -39,8 +40,8 @@ namespace DietApp
                 label3.Visible= true;
                 label4.Visible= true;
                 label6.Visible= true;
-                textBox5.Visible= true;
-                textBox6.Visible= true;
+                maskedTextBox2.Visible= true;
+                maskedTextBox3.Visible= true;
                 dateTimePicker1.Visible= true;
                 label11.Visible=true;
                 maskedTextBox1.Visible= true;
@@ -58,8 +59,8 @@ namespace DietApp
                 label3.Visible = false;
                 label4.Visible = false;
                 label6.Visible = false;
-                textBox5.Visible = false;
-                textBox6.Visible = false;
+                maskedTextBox2.Visible = false;
+                maskedTextBox3.Visible = false;
                 dateTimePicker1.Visible = false;
                 label11.Visible = false;
                 maskedTextBox1.Visible= false;
@@ -83,6 +84,44 @@ namespace DietApp
             form2.Show();
         }
 
+        private void textBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, @"^[A-Za-z\s]+$"))
+            {
+                MessageBox.Show("Please enter letters only");
+            }
+        }
 
+        private void textBox2_Validating(object sender, CancelEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox2.Text, @"^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("Please enter letters only");
+            }
+        }
+
+        private void textBox3_Validating(object sender, CancelEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox3.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"))
+            {
+                MessageBox.Show("Password must contain at least one lowercase letter,one uppercase letter, one digit,one special character and must be at least 8 characters long");
+            }
+        }
+
+        private void textBox7_Validating(object sender, CancelEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox3.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"))
+            {
+                MessageBox.Show("Password must contain at least one lowercase letter,one uppercase letter, one digit,one special character and must be at least 8 characters long");
+            }
+        }
+
+        private void textBox7_Leave(object sender, EventArgs e)
+        {
+            if(textBox7.Text!=textBox3.Text)
+            {
+                MessageBox.Show("Passwords must be the same");
+            }
+        }
     }
 }

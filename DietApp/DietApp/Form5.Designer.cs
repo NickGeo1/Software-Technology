@@ -1277,11 +1277,19 @@
             // maskedTextBox1
             // 
             this.maskedTextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.maskedTextBox1.BeepOnError = true;
+            this.maskedTextBox1.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox1.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.maskedTextBox1.Location = new System.Drawing.Point(74, 63);
+            this.maskedTextBox1.Mask = "00";
             this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.PromptChar = '0';
+            this.maskedTextBox1.ResetOnPrompt = false;
+            this.maskedTextBox1.ResetOnSpace = false;
             this.maskedTextBox1.Size = new System.Drawing.Size(44, 29);
             this.maskedTextBox1.TabIndex = 64;
+            this.maskedTextBox1.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             // 
             // maskedTextBox3
             // 
@@ -1300,11 +1308,20 @@
             // maskedTextBox4
             // 
             this.maskedTextBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.maskedTextBox4.BeepOnError = true;
+            this.maskedTextBox4.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             this.maskedTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox4.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.maskedTextBox4.Location = new System.Drawing.Point(411, 64);
+            this.maskedTextBox4.Mask = "000";
             this.maskedTextBox4.Name = "maskedTextBox4";
+            this.maskedTextBox4.PromptChar = '0';
+            this.maskedTextBox4.ResetOnPrompt = false;
+            this.maskedTextBox4.ResetOnSpace = false;
             this.maskedTextBox4.Size = new System.Drawing.Size(44, 29);
             this.maskedTextBox4.TabIndex = 66;
+            this.maskedTextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.maskedTextBox4.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             this.maskedTextBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.maskedTextBox4_KeyPress);
             // 
             // maskedTextBox5
@@ -1313,6 +1330,7 @@
             this.maskedTextBox5.BeepOnError = true;
             this.maskedTextBox5.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             this.maskedTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox5.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.maskedTextBox5.Location = new System.Drawing.Point(798, 644);
             this.maskedTextBox5.Mask = "000.00";
             this.maskedTextBox5.Name = "maskedTextBox5";
@@ -1328,11 +1346,20 @@
             // maskedTextBox6
             // 
             this.maskedTextBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.maskedTextBox6.BeepOnError = true;
+            this.maskedTextBox6.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             this.maskedTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox6.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.maskedTextBox6.Location = new System.Drawing.Point(1083, 644);
+            this.maskedTextBox6.Mask = "00";
             this.maskedTextBox6.Name = "maskedTextBox6";
+            this.maskedTextBox6.PromptChar = '0';
+            this.maskedTextBox6.ResetOnPrompt = false;
+            this.maskedTextBox6.ResetOnSpace = false;
             this.maskedTextBox6.Size = new System.Drawing.Size(44, 29);
             this.maskedTextBox6.TabIndex = 68;
+            this.maskedTextBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.maskedTextBox6.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             // 
             // maskedTextBox7
             // 
@@ -1340,6 +1367,7 @@
             this.maskedTextBox7.BeepOnError = true;
             this.maskedTextBox7.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             this.maskedTextBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox7.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.maskedTextBox7.Location = new System.Drawing.Point(969, 345);
             this.maskedTextBox7.Mask = "00";
             this.maskedTextBox7.Name = "maskedTextBox7";
@@ -1358,6 +1386,7 @@
             this.maskedTextBox8.BeepOnError = true;
             this.maskedTextBox8.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             this.maskedTextBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox8.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.maskedTextBox8.Location = new System.Drawing.Point(969, 386);
             this.maskedTextBox8.Mask = "00";
             this.maskedTextBox8.Name = "maskedTextBox8";

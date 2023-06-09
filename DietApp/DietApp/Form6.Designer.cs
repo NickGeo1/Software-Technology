@@ -133,9 +133,10 @@
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(327, 31);
             this.maskedTextBox1.TabIndex = 7;
-            this.maskedTextBox1.Text = "Enter SSN or Full Name";
+            this.maskedTextBox1.Text = "Enter SSN";
             this.maskedTextBox1.Enter += new System.EventHandler(this.maskedTextBox1_Enter);
             this.maskedTextBox1.Leave += new System.EventHandler(this.maskedTextBox1_Leave);
+            this.maskedTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.maskedTextBox1_Validating);
             // 
             // Form6
             // 
