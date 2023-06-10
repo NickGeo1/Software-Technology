@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using MySql.Data.MySqlClient;
 
 namespace DietApp
 {
+    
     public partial class Form4 : Form
     {
+        
         bool flag = true;
         public Form4()
         {
@@ -26,7 +29,16 @@ namespace DietApp
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            string connection_string = "server=127.0.0.1;uid=root;pwd=autamaresoun;database=diet_app";
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connection_string;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("insert into users(id, role) values('" + textBox4.Text + "','patient'", con);
+            MySqlCommand cmd2 = new MySqlCommand("insert into patient (id , First_name,Last_name,ssn,postal_code,birthday,nutritionist_id,telephone) values('" + textBox4.Text + "','" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + maskedTextBox2.Text + "','" + maskedTextBox3.Text + "','" + Diet.diaitologos + "','" + maskedTextBox1.Text + "'", con);
+            MySqlDataReader myreader;
+            myreader = cmd.ExecuteReader();
+            myreader = cmd2.ExecuteReader();
+           
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)

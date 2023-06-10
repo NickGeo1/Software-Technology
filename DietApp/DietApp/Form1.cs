@@ -11,8 +11,12 @@ using MySql.Data.MySqlClient;
 
 namespace DietApp
 {
+
     public partial class Form1 : Form
-    {   
+    {
+        public static class Diet{
+            public static string diaitologos;
+        }
         List<string> btn1 = new List<string>() { "enter (1).png", "enter.png" };
         public static string user_type;
         
@@ -33,17 +37,16 @@ namespace DietApp
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connection_string;
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("select id from nutritionist where id='@id_name'", con);
-            cmd.Parameters.AddWithValue("@id_name", maskedTextBox1.Text);
-            //cmd.Parameters.AddWithValue("password", textBox2.Text);
+            MySqlCommand cmd = new MySqlCommand("select id from nutritionist where id='" + maskedTextBox1.Text + "' and password='" + textBox2.Text + "'", con);
             MySqlDataReader myreader;
             myreader = cmd.ExecuteReader();
-
             user_type = radioButton1.Text;
             if (radioButton1.Checked)
             {
-                if (myreader.Read())    //myreader.Read()
+                if (myreader.Read())   
                 {
+                    Diet.diaitologos= myreader["id"].ToString();
+                    MessageBox.Show(Diet.diaitologos.ToString());
                     this.Hide();
                     Form2 form2 = new Form2();
                     form2.Show();
@@ -93,5 +96,9 @@ namespace DietApp
 
             }
         }
+    }
+    public static class Diet
+    {
+        public static string diaitologos;
     }
 }

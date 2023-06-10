@@ -1060,7 +1060,7 @@
             this.label13.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(1268, 673);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 16);
+            this.label13.Size = new System.Drawing.Size(70, 16);
             this.label13.TabIndex = 57;
             this.label13.Text = "Register";
             // 
@@ -1075,6 +1075,7 @@
             this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox25.TabIndex = 56;
             this.pictureBox25.TabStop = false;
+            this.pictureBox25.Click += new System.EventHandler(this.pictureBox25_Click);
             // 
             // label14
             // 
@@ -1257,7 +1258,7 @@
             this.label16.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(1204, 673);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(43, 16);
+            this.label16.Size = new System.Drawing.Size(44, 16);
             this.label16.TabIndex = 62;
             this.label16.Text = "Menu";
             // 

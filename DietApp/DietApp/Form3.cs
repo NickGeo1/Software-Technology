@@ -44,5 +44,10 @@ namespace DietApp
                 form1.Show();
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

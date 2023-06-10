@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace DietApp
 {
     public partial class Form5 : Form
     {
+        List<string> PANEL2 = new List<string>(){};
         double weight = 0;
         double height = 0;
         double bmi = 0;
@@ -24,8 +26,7 @@ namespace DietApp
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            panel5.BackColor= Color.FromArgb(150, 250, 235, 215);
-            label15.BackColor = Color.FromArgb(150, 250, 235, 215);
+
         }
 
         private void Form5_FormClosed(object sender, FormClosedEventArgs e)
@@ -67,6 +68,20 @@ namespace DietApp
                 bmi = Math.Ceiling(bmi);
                 textBox6.Text = bmi.ToString();
             }
+        }
+
+        private void pictureBox25_Click(object sender, EventArgs e)
+        {
+            string connection_string = "server=127.0.0.1;uid=root;pwd=autamaresoun;database=diet_app";
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connection_string;
+            con.Open();
+            var checkedButton = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            var checkedButton1 = panel3.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            var checkedButton2 = panel4.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            var checkedButton3 = panel5.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+
+            MySqlCommand cmd = new MySqlCommand("insert into program(patient_id ,bmi,type_of_diet,exlude,meals,special_needs,reasons_to_diet,desired_weight,weeks_of_dieting,hours_of_sleep,hours_of_excersise) values('" + maskedTextBox2.Text + "','" + textBox6.Text + "','" + checkedButton.Text.ToString() + "','" + textBox3.Text + "','" + maskedTextBox2.Text + "','" + maskedTextBox3.Text + "','" + checkedButton1.Text.ToString() + "','" + maskedTextBox5.Text + "','" + maskedTextBox6.Text + "','" + maskedTextBox7.Text + "','" + maskedTextBox8.Text + "'", con);
         }
     }
 }

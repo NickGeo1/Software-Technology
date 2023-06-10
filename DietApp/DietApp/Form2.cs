@@ -43,6 +43,10 @@ namespace DietApp
             }
             else
             {
+                flag = false;
+                this.Close();
+                Form6 form6 = new Form6();
+                form6.Show();
             
             }
         }

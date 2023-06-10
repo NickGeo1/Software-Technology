@@ -33,7 +33,6 @@ C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\bin\Deb
 C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\bin\Debug\DietApp.exe
 C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\bin\Debug\DietApp.pdb
 C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.csproj.AssemblyReference.cache
-C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.Form1.resources
 C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.Form2.resources
 C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.Form3.resources
 C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.Form4.resources
@@ -70,3 +69,4 @@ C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\bin\Deb
 C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.csproj.CopyComplete
+C:\Users\alexp\Source\Repos\NickGeo1\Software-Technology\DietApp\DietApp\obj\Debug\DietApp.Form1.resources
