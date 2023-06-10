@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace DietApp
 {
@@ -28,12 +29,27 @@ namespace DietApp
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            string connection_string = "server=127.0.0.1;uid=root;pwd=autamaresoun;database=diet_app";
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = connection_string;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("select id from nutritionist where id='@id_name'", con);
+            cmd.Parameters.AddWithValue("@id_name", maskedTextBox1.Text);
+            //cmd.Parameters.AddWithValue("password", textBox2.Text);
+            MySqlDataReader myreader;
+            myreader = cmd.ExecuteReader();
+
             user_type = radioButton1.Text;
             if (radioButton1.Checked)
             {
-                this.Hide();
-                Form2 form2 = new Form2();
-                form2.Show();
+                if (myreader.Read())    //myreader.Read()
+                {
+                    this.Hide();
+                    Form2 form2 = new Form2();
+                    form2.Show();
+                }
+                else
+                    MessageBox.Show("Sorry wrong id or password. Please type your correct id and password");
             }
             else
             {
