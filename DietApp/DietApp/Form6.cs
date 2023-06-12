@@ -22,7 +22,7 @@ namespace DietApp
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            
+
             string connection_string = "server=127.0.0.1;uid=root;pwd=autamaresoun;database=diet_app";
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connection_string;
