@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 
 namespace DietApp
 {
@@ -76,12 +77,35 @@ namespace DietApp
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connection_string;
             con.Open();
-            var checkedButton = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-            var checkedButton1 = panel3.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-            var checkedButton2 = panel4.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-            var checkedButton3 = panel5.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            var diet = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            var reason = panel3.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            var exclude = panel2.Controls.OfType<CheckBox>().Where(x => x.Checked).ToString().ToList();
+            var exclude_string= String.Join(",", exclude);
+            var meals = panel4.Controls.OfType<CheckBox>().Where(x => x.Checked).ToString().ToList();
+            var meals_string = String.Join(",", meals);
+            var special_neads = panel5.Controls.OfType<CheckBox>().Where(x => x.Checked).ToString().ToList();
+            var special_needs_string = String.Join(",", special_neads);
 
-            MySqlCommand cmd = new MySqlCommand("insert into program(patient_id ,bmi,type_of_diet,exlude,meals,special_needs,reasons_to_diet,desired_weight,weeks_of_dieting,hours_of_sleep,hours_of_excersise) values('" + maskedTextBox2.Text + "','" + textBox6.Text + "','" + checkedButton.Text.ToString() + "','" + textBox3.Text + "','" + maskedTextBox2.Text + "','" + maskedTextBox3.Text + "','" + checkedButton1.Text.ToString() + "','" + maskedTextBox5.Text + "','" + maskedTextBox6.Text + "','" + maskedTextBox7.Text + "','" + maskedTextBox8.Text + "'", con);
+
+
+
+
+            MySqlCommand cmd = new MySqlCommand("insert into program(patient_id ,bmi,type_of_diet," +
+                "exlude,meals,special_needs," +
+                "reasons_to_diet,desired_weight,weeks_of_dieting," +
+                "hours_of_sleep,hours_of_excersise) " +
+                "values('" + maskedTextBox2.Text + "','" + textBox6.Text + "','" + diet.Text.ToString() + 
+                "','" + exclude_string + "','" + meals_string + "','" + special_needs_string + 
+                "','" + reason.Text.ToString() + "','" + maskedTextBox5.Text + "','" + maskedTextBox6.Text + 
+                "','" + maskedTextBox7.Text + "','" + maskedTextBox8.Text + "'", con);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            flag = false;
+            this.Close();
+            Form1 form1 = new Form1();
+            form1.Show();
         }
     }
 }

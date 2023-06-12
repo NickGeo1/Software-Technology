@@ -122,6 +122,7 @@
             this.maskedTextBox7 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox8 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -1060,7 +1061,7 @@
             this.label13.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(1268, 673);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(70, 16);
+            this.label13.Size = new System.Drawing.Size(69, 16);
             this.label13.TabIndex = 57;
             this.label13.Text = "Register";
             // 
@@ -1258,7 +1259,7 @@
             this.label16.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(1204, 673);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(44, 16);
+            this.label16.Size = new System.Drawing.Size(43, 16);
             this.label16.TabIndex = 62;
             this.label16.Text = "Menu";
             // 
@@ -1419,6 +1420,21 @@
             this.maskedTextBox2.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             this.maskedTextBox2.ValidatingType = typeof(int);
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.Chocolate;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(1329, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(62, 24);
+            this.button1.TabIndex = 74;
+            this.button1.Text = "Log Out";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1426,6 +1442,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1403, 693);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.maskedTextBox2);
             this.Controls.Add(this.maskedTextBox8);
             this.Controls.Add(this.maskedTextBox7);
@@ -1600,5 +1617,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox7;
         private System.Windows.Forms.MaskedTextBox maskedTextBox8;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.Button button1;
     }
 }

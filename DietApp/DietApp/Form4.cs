@@ -135,5 +135,13 @@ namespace DietApp
                 MessageBox.Show("Passwords must be the same");
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            flag = false;
+            this.Close();
+            Form1 form1 = new Form1();
+            form1.Show();
+        }
     }
 }
