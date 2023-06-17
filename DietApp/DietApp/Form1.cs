@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace DietApp
 {
@@ -19,21 +20,31 @@ namespace DietApp
         }
         List<string> btn1 = new List<string>() { "enter (1).png", "enter.png" };
         public static string user_type;
-        
+
+        private static string connstr;
+
+
         public Form1()
         {
             InitializeComponent();
+            connstr = GetConnectionString();
             radioButton1.Checked = false; 
             radioButton2.Checked= true;
             panel1.Visible= false;
         }
 
+        private static string GetConnectionString()
+        {
+            ConnectionStringSettingsCollection settings =
+                ConfigurationManager.ConnectionStrings;
 
+            return settings[0].ConnectionString; //return App.config connection string
 
+        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            string connection_string = "server=127.0.0.1;uid=root;pwd=autamaresoun;database=diet_app";
+            string connection_string = connstr;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connection_string;
             con.Open();
