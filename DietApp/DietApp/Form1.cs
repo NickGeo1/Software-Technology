@@ -15,9 +15,6 @@ namespace DietApp
 
     public partial class Form1 : Form
     {
-        public static class Diet{
-            public static string diaitologos;
-        }
         List<string> btn1 = new List<string>() { "enter (1).png", "enter.png" };
         public static string user_type;
 

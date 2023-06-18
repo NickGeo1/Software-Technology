@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace DietApp
 {
@@ -17,28 +18,48 @@ namespace DietApp
     {
         
         bool flag = true;
+        private static string connstr;
+
         public Form4()
         {
             InitializeComponent();
+            connstr = GetConnectionString();
             Random rnd= new Random();
             string id = rnd.Next(999999).ToString().PadLeft(6, '0');
             textBox4.Text = id;
 
+        }
+
+        private static string GetConnectionString()
+        {
+            ConnectionStringSettingsCollection settings =
+                ConfigurationManager.ConnectionStrings;
+
+            return settings[0].ConnectionString; //return App.config connection string
 
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            string connection_string = "server=127.0.0.1;uid=root;pwd=autamaresoun;database=diet_app";
+            string connection_string = connstr;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connection_string;
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("insert into users(id, role) values('" + textBox4.Text + "','patient'", con);
-            MySqlCommand cmd2 = new MySqlCommand("insert into patient (id , First_name,Last_name,ssn,postal_code,birthday,nutritionist_id,telephone) values('" + textBox4.Text + "','" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + maskedTextBox2.Text + "','" + maskedTextBox3.Text + "','" + Diet.diaitologos + "','" + maskedTextBox1.Text + "'", con);
-            MySqlDataReader myreader;
-            myreader = cmd.ExecuteReader();
-            myreader = cmd2.ExecuteReader();
-           
+            MySqlCommand cmd = new MySqlCommand("insert into users(id, role) values('" + textBox4.Text + "','patient')", con);
+
+            string birthday = dateTimePicker1.Value.ToString("yyyy/MM/dd"); //change date format to yyyy/MM/dd
+
+            MySqlCommand cmd2 = new MySqlCommand("insert into patient (id , First_name,Last_name,ssn,postal_code,birthday,nutritionist_id,telephone) values" +
+            "('" + textBox4.Text + "','" + textBox1.Text + "','" + textBox2.Text + "','" + maskedTextBox2.Text + "','" + int.Parse(maskedTextBox3.Text) + 
+            "','" + birthday + "','" + Diet.diaitologos + "','" +  maskedTextBox1.Text + "')", con);
+            
+            cmd.ExecuteReader();
+            con.Close();
+
+            con.Open();
+            cmd2.ExecuteReader();
+            con.Close();
+
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -142,6 +163,18 @@ namespace DietApp
             this.Close();
             Form1 form1 = new Form1();
             form1.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach(Control tb in this.Controls)
+            {
+                if (tb is MaskedTextBox)
+                {
+                    Console.WriteLine(tb.Text);
+                    Console.WriteLine(tb.Text.GetType());
+                }
+            }
         }
     }
 }

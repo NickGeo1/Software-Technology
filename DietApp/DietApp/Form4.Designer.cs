@@ -172,7 +172,7 @@
             this.label7.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(702, 381);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 16);
+            this.label7.Size = new System.Drawing.Size(70, 16);
             this.label7.TabIndex = 14;
             this.label7.Text = "Register";
             // 
@@ -255,7 +255,7 @@
             this.label10.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(642, 381);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 16);
+            this.label10.Size = new System.Drawing.Size(44, 16);
             this.label10.TabIndex = 22;
             this.label10.Text = "Menu";
             // 
@@ -310,7 +310,7 @@
             this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskedTextBox1.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.maskedTextBox1.Location = new System.Drawing.Point(523, 216);
-            this.maskedTextBox1.Mask = "***-***-****";
+            this.maskedTextBox1.Mask = "(999) 000-0000";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.PromptChar = '*';
             this.maskedTextBox1.ResetOnPrompt = false;
