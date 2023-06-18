@@ -82,6 +82,7 @@ namespace DietApp
                 MessageBox.Show("Patient id Not found");
             }
 
+            con.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)

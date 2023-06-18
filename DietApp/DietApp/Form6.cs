@@ -10,33 +10,60 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MySql.Data.MySqlClient;
+using System.Configuration;
+
 namespace DietApp
 {
     public partial class Form6 : Form
     {
         bool flag = true;
+        private static string connstr;
         public Form6()
         {
             InitializeComponent();
+            connstr = GetConnectionString();
+        }
+
+        private static string GetConnectionString()
+        {
+            ConnectionStringSettingsCollection settings =
+                ConfigurationManager.ConnectionStrings;
+
+            return settings[0].ConnectionString; //return App.config connection string
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
-            string connection_string = "server=127.0.0.1;uid=root;pwd=autamaresoun;database=diet_app";
+            MessageBox.Show(maskedTextBox1.Text);
+            string connection_string = connstr;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connection_string;
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("select id from patient where id='" + maskedTextBox1.Text + "'", con);
+            MySqlCommand cmd = new MySqlCommand("select * from patient where ssn='" + maskedTextBox1.Text + "'", con);
             MySqlDataReader myreader;
             myreader = cmd.ExecuteReader();
-            string fullname = myreader["First_name"].ToString() + " " + myreader["Last_name"].ToString(); 
-            string ssn = myreader["ssn"].ToString();
-            string id = myreader["id"].ToString();
-            label3.Text = myreader["First_name"].ToString() + " " + myreader["Last_name"].ToString();
-            label5.Text = myreader["ssn"].ToString();
-            label4.Text = myreader["id"].ToString();
+            if (myreader.Read())
+            {
+                string fullname = myreader["First_name"].ToString() + " " + myreader["Last_name"].ToString();
+                string ssn = myreader["ssn"].ToString();
+                string id = myreader["id"].ToString();
+                label3.Text += myreader["First_name"].ToString() + " " + myreader["Last_name"].ToString();
+                label5.Text += myreader["ssn"].ToString();
+                label4.Text += myreader["id"].ToString();
+
+                panel1.Visible = true;
+            }
+            else
+            {
+                panel1.Visible = false;
+                MessageBox.Show("No patient found with this ssn");
+            }
+
+            con.Close();
         }
+           
+
 
         private void maskedTextBox1_Enter(object sender, EventArgs e)
         {

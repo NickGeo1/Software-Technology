@@ -68,6 +68,8 @@ namespace DietApp
                 Form3 form3 = new Form3();
                 form3.Show();
             }
+
+            con.Close();
         }
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
