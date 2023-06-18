@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -19,14 +20,22 @@ namespace DietApp
         double height = 0;
         double bmi = 0;
         bool flag = true;
+        private static string connstr;
+
         public Form5()
         {
-
+            connstr = GetConnectionString();
             InitializeComponent();
+            Console.WriteLine(maskedTextBox3.Text);
+            Console.WriteLine(maskedTextBox4.Text);
         }
 
-        private void Form5_Load(object sender, EventArgs e)
+        private static string GetConnectionString()
         {
+            ConnectionStringSettingsCollection settings =
+                ConfigurationManager.ConnectionStrings;
+
+            return settings[0].ConnectionString; //return App.config connection string
 
         }
 
@@ -35,7 +44,6 @@ namespace DietApp
             if (flag==true)
             {
                 Application.Exit();
-
             }
         }
 
@@ -47,11 +55,11 @@ namespace DietApp
             form2.Show();
         }
 
-        private void maskedTextBox3_KeyPress(object sender, KeyPressEventArgs e)
+        private void maskedTextBox3_TextChanged(object sender, EventArgs e)
         {
-            if (maskedTextBox4.Text != null && maskedTextBox4.Text != "0")
+            if (maskedTextBox3.MaskFull && maskedTextBox4.MaskFull)
             {
-                weight = Int32.Parse(maskedTextBox3.Text);
+                weight = Double.Parse(maskedTextBox3.Text);
                 height = Int32.Parse(maskedTextBox4.Text);
                 bmi = weight / Math.Pow(height / 100, 2);
                 bmi = Math.Ceiling(bmi);
@@ -59,11 +67,11 @@ namespace DietApp
             }
         }
 
-        private void maskedTextBox4_KeyPress(object sender, KeyPressEventArgs e)
+        private void maskedTextBox4_TextChanged(object sender, EventArgs e)
         {
-            if (maskedTextBox3.Text != null && maskedTextBox3.Text != "0")
+            if (maskedTextBox3.MaskFull && maskedTextBox4.MaskFull)
             {
-                weight = Int32.Parse(maskedTextBox3.Text);
+                weight = Double.Parse(maskedTextBox3.Text);
                 height = Int32.Parse(maskedTextBox4.Text);
                 bmi = weight / Math.Pow(height / 100, 2);
                 bmi = Math.Ceiling(bmi);
@@ -73,7 +81,7 @@ namespace DietApp
 
         private void pictureBox25_Click(object sender, EventArgs e)
         {
-            string connection_string = "server=127.0.0.1;uid=root;pwd=autamaresoun;database=diet_app";
+            string connection_string = connstr;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connection_string;
             con.Open();
@@ -85,9 +93,6 @@ namespace DietApp
             var meals_string = String.Join(",", meals);
             var special_neads = panel5.Controls.OfType<CheckBox>().Where(x => x.Checked).ToString().ToList();
             var special_needs_string = String.Join(",", special_neads);
-
-
-
 
 
             MySqlCommand cmd = new MySqlCommand("insert into program(patient_id ,bmi,type_of_diet," +
@@ -107,5 +112,6 @@ namespace DietApp
             Form1 form1 = new Form1();
             form1.Show();
         }
+
     }
 }

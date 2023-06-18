@@ -1061,7 +1061,7 @@
             this.label13.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(1268, 673);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 16);
+            this.label13.Size = new System.Drawing.Size(70, 16);
             this.label13.TabIndex = 57;
             this.label13.Text = "Register";
             // 
@@ -1259,7 +1259,7 @@
             this.label16.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(1204, 673);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(43, 16);
+            this.label16.Size = new System.Drawing.Size(44, 16);
             this.label16.TabIndex = 62;
             this.label16.Text = "Menu";
             // 
@@ -1286,7 +1286,6 @@
             this.maskedTextBox1.Location = new System.Drawing.Point(74, 63);
             this.maskedTextBox1.Mask = "00";
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.PromptChar = '0';
             this.maskedTextBox1.ResetOnPrompt = false;
             this.maskedTextBox1.ResetOnSpace = false;
             this.maskedTextBox1.Size = new System.Drawing.Size(44, 29);
@@ -1301,11 +1300,10 @@
             this.maskedTextBox3.Location = new System.Drawing.Point(227, 63);
             this.maskedTextBox3.Mask = "000.00";
             this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.PromptChar = '0';
             this.maskedTextBox3.Size = new System.Drawing.Size(72, 29);
             this.maskedTextBox3.TabIndex = 65;
             this.maskedTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.maskedTextBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.maskedTextBox3_KeyPress);
+            this.maskedTextBox3.TextChanged += new System.EventHandler(this.maskedTextBox3_TextChanged);
             // 
             // maskedTextBox4
             // 
@@ -1317,14 +1315,12 @@
             this.maskedTextBox4.Location = new System.Drawing.Point(411, 64);
             this.maskedTextBox4.Mask = "000";
             this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.PromptChar = '0';
             this.maskedTextBox4.ResetOnPrompt = false;
             this.maskedTextBox4.ResetOnSpace = false;
             this.maskedTextBox4.Size = new System.Drawing.Size(44, 29);
             this.maskedTextBox4.TabIndex = 66;
-            this.maskedTextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.maskedTextBox4.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
-            this.maskedTextBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.maskedTextBox4_KeyPress);
+            this.maskedTextBox4.TextChanged += new System.EventHandler(this.maskedTextBox4_TextChanged);
             // 
             // maskedTextBox5
             // 
@@ -1481,7 +1477,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MyDietPlan";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form5_FormClosed);
-            this.Load += new System.EventHandler(this.Form5_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
