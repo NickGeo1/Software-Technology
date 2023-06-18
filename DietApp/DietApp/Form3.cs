@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -14,13 +15,25 @@ namespace DietApp
     public partial class Form3 : Form
     {   
         bool flag = true;
+        private static string connstr;
+
         public Form3()
         {
             InitializeComponent();
+            connstr = GetConnectionString();
             if (Form1.user_type == "Patient")
             {
                 button1.Visible= false;
             }
+        }
+
+        private static string GetConnectionString()
+        {
+            ConnectionStringSettingsCollection settings =
+                ConfigurationManager.ConnectionStrings;
+
+            return settings[0].ConnectionString; //return App.config connection string
+
         }
 
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
@@ -52,14 +65,22 @@ namespace DietApp
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            string connection_string = "server=127.0.0.1;uid=root;pwd=autamaresoun;database=diet_app";
+            string connection_string = connstr;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = connection_string;
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("select id from patient where id='" + maskedTextBox1.Text + "'", con);
+            MySqlCommand cmd = new MySqlCommand("select * from patient where id='" + maskedTextBox1.Text + "'", con);
             MySqlDataReader myreader;
             myreader = cmd.ExecuteReader();
-            string fullname = myreader["First_name"].ToString() + " " + myreader["Last_name"].ToString();
+            if (myreader.Read())
+            {
+                string fullname = myreader["First_name"].ToString() + " " + myreader["Last_name"].ToString();
+                MessageBox.Show(fullname);
+            }
+            else
+            {
+                MessageBox.Show("Patient id Not found");
+            }
 
         }
 
