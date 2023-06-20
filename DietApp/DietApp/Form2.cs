@@ -31,7 +31,7 @@ namespace DietApp
             {
                 flag= false;
                 this.Close();
-                Form5 form5 = new Form5();
+                Form5 form5 = new Form5("000000");
                 form5.Show();
             }
             else if(radioButton3.Checked)

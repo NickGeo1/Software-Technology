@@ -60,7 +60,12 @@ namespace DietApp
             cmd2.ExecuteReader();
             con.Close();
 
-            MessageBox.Show("Patient " + textBox4.Text + " Successfully registered!");
+            MessageBox.Show("Patient " + textBox4.Text + " successfuly registered!");
+            MessageBox.Show("Lets create now his diet plan!");
+
+            flag = false;
+            new Form5(textBox4.Text).Show(); //pass patient id on form5
+            this.Close();
 
         }
 

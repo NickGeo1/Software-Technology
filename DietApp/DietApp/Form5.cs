@@ -22,12 +22,12 @@ namespace DietApp
         bool flag = true;
         private static string connstr;
 
-        public Form5()
+        public Form5(string patient_id)
         {
-            connstr = GetConnectionString();
             InitializeComponent();
-            Console.WriteLine(maskedTextBox3.Text);
-            Console.WriteLine(maskedTextBox4.Text);
+            connstr = GetConnectionString();
+            maskedTextBox2.Text = patient_id;
+
         }
 
         private static string GetConnectionString()
@@ -151,7 +151,12 @@ namespace DietApp
             cmd4.ExecuteReader();
             con.Close();
 
-            MessageBox.Show("Successfully created patient program!");
+            MessageBox.Show("Successfuly created patient program!");
+
+            flag = false;
+            this.Close();
+            new Form2().Show(); //go back to main menu
+
         }
 
         private void button1_Click(object sender, EventArgs e)
