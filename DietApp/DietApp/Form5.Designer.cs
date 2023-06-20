@@ -521,6 +521,7 @@
             this.checkBox10.Name = "checkBox10";
             this.checkBox10.Size = new System.Drawing.Size(174, 35);
             this.checkBox10.TabIndex = 37;
+            this.checkBox10.Tag = "10";
             this.checkBox10.Text = "Mushrooms";
             this.checkBox10.UseVisualStyleBackColor = false;
             // 
@@ -534,6 +535,7 @@
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(132, 35);
             this.checkBox9.TabIndex = 36;
+            this.checkBox9.Tag = "9";
             this.checkBox9.Text = "Sesame";
             this.checkBox9.UseVisualStyleBackColor = false;
             // 
@@ -547,6 +549,7 @@
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(154, 35);
             this.checkBox8.TabIndex = 35;
+            this.checkBox8.Tag = "8";
             this.checkBox8.Text = "Soybeans";
             this.checkBox8.UseVisualStyleBackColor = false;
             // 
@@ -560,6 +563,7 @@
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(279, 35);
             this.checkBox7.TabIndex = 34;
+            this.checkBox7.Tag = "7";
             this.checkBox7.Text = "Crustacean shellfish";
             this.checkBox7.UseVisualStyleBackColor = false;
             // 
@@ -573,6 +577,7 @@
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(133, 35);
             this.checkBox6.TabIndex = 34;
+            this.checkBox6.Tag = "6";
             this.checkBox6.Text = "Peanuts";
             this.checkBox6.UseVisualStyleBackColor = false;
             // 
@@ -586,6 +591,7 @@
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(153, 35);
             this.checkBox5.TabIndex = 33;
+            this.checkBox5.Tag = "5";
             this.checkBox5.Text = "Tree Nuts";
             this.checkBox5.UseVisualStyleBackColor = false;
             // 
@@ -599,6 +605,7 @@
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(81, 35);
             this.checkBox4.TabIndex = 32;
+            this.checkBox4.Tag = "4";
             this.checkBox4.Text = "Egg";
             this.checkBox4.UseVisualStyleBackColor = false;
             // 
@@ -612,6 +619,7 @@
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(111, 35);
             this.checkBox3.TabIndex = 31;
+            this.checkBox3.Tag = "3";
             this.checkBox3.Text = "Wheat";
             this.checkBox3.UseVisualStyleBackColor = false;
             // 
@@ -625,6 +633,7 @@
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(97, 35);
             this.checkBox2.TabIndex = 31;
+            this.checkBox2.Tag = "2";
             this.checkBox2.Text = "Dairy";
             this.checkBox2.UseVisualStyleBackColor = false;
             // 
@@ -638,6 +647,7 @@
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(85, 35);
             this.checkBox1.TabIndex = 30;
+            this.checkBox1.Tag = "1";
             this.checkBox1.Text = "Fish";
             this.checkBox1.UseVisualStyleBackColor = false;
             // 
@@ -899,6 +909,7 @@
             this.textBox6.Size = new System.Drawing.Size(52, 29);
             this.textBox6.TabIndex = 39;
             this.textBox6.Text = "0";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // checkBox11
             // 
@@ -910,6 +921,7 @@
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.Size = new System.Drawing.Size(149, 35);
             this.checkBox11.TabIndex = 41;
+            this.checkBox11.Tag = "1";
             this.checkBox11.Text = "Breakfast";
             this.checkBox11.UseVisualStyleBackColor = false;
             // 
@@ -947,6 +959,7 @@
             this.checkBox12.Name = "checkBox12";
             this.checkBox12.Size = new System.Drawing.Size(107, 35);
             this.checkBox12.TabIndex = 43;
+            this.checkBox12.Tag = "2";
             this.checkBox12.Text = "Lunch";
             this.checkBox12.UseVisualStyleBackColor = false;
             // 
@@ -972,6 +985,7 @@
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.Size = new System.Drawing.Size(109, 35);
             this.checkBox13.TabIndex = 45;
+            this.checkBox13.Tag = "3";
             this.checkBox13.Text = "Snack";
             this.checkBox13.UseVisualStyleBackColor = false;
             // 
@@ -997,6 +1011,7 @@
             this.checkBox14.Name = "checkBox14";
             this.checkBox14.Size = new System.Drawing.Size(113, 35);
             this.checkBox14.TabIndex = 47;
+            this.checkBox14.Tag = "4";
             this.checkBox14.Text = "Dinner";
             this.checkBox14.UseVisualStyleBackColor = false;
             // 
@@ -1108,6 +1123,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(366, 437);
             this.panel5.TabIndex = 59;
+            this.panel5.Tag = "";
             // 
             // checkBox15
             // 
@@ -1119,6 +1135,7 @@
             this.checkBox15.Name = "checkBox15";
             this.checkBox15.Size = new System.Drawing.Size(194, 35);
             this.checkBox15.TabIndex = 37;
+            this.checkBox15.Tag = "10";
             this.checkBox15.Text = "Osteoporosis";
             this.checkBox15.UseVisualStyleBackColor = false;
             // 
@@ -1132,6 +1149,7 @@
             this.checkBox16.Name = "checkBox16";
             this.checkBox16.Size = new System.Drawing.Size(335, 35);
             this.checkBox16.TabIndex = 36;
+            this.checkBox16.Tag = "9";
             this.checkBox16.Text = "Cardiovascular Diseases";
             this.checkBox16.UseVisualStyleBackColor = false;
             // 
@@ -1145,6 +1163,7 @@
             this.checkBox17.Name = "checkBox17";
             this.checkBox17.Size = new System.Drawing.Size(210, 35);
             this.checkBox17.TabIndex = 35;
+            this.checkBox17.Tag = "8";
             this.checkBox17.Text = "Breast-feeding";
             this.checkBox17.UseVisualStyleBackColor = false;
             // 
@@ -1158,6 +1177,7 @@
             this.checkBox18.Name = "checkBox18";
             this.checkBox18.Size = new System.Drawing.Size(148, 35);
             this.checkBox18.TabIndex = 34;
+            this.checkBox18.Tag = "7";
             this.checkBox18.Text = "Pregnacy";
             this.checkBox18.UseVisualStyleBackColor = false;
             // 
@@ -1171,6 +1191,7 @@
             this.checkBox19.Name = "checkBox19";
             this.checkBox19.Size = new System.Drawing.Size(244, 35);
             this.checkBox19.TabIndex = 34;
+            this.checkBox19.Tag = "6";
             this.checkBox19.Text = "High Blood Sugar";
             this.checkBox19.UseVisualStyleBackColor = false;
             // 
@@ -1184,6 +1205,7 @@
             this.checkBox20.Name = "checkBox20";
             this.checkBox20.Size = new System.Drawing.Size(310, 35);
             this.checkBox20.TabIndex = 33;
+            this.checkBox20.Tag = "5";
             this.checkBox20.Text = "High Blood Cholesterol";
             this.checkBox20.UseVisualStyleBackColor = false;
             // 
@@ -1197,6 +1219,7 @@
             this.checkBox21.Name = "checkBox21";
             this.checkBox21.Size = new System.Drawing.Size(230, 35);
             this.checkBox21.TabIndex = 32;
+            this.checkBox21.Tag = "4";
             this.checkBox21.Text = "Hyporthyroidism";
             this.checkBox21.UseVisualStyleBackColor = false;
             // 
@@ -1210,6 +1233,7 @@
             this.checkBox22.Name = "checkBox22";
             this.checkBox22.Size = new System.Drawing.Size(230, 35);
             this.checkBox22.TabIndex = 31;
+            this.checkBox22.Tag = "3";
             this.checkBox22.Text = "Hyperthyroidism";
             this.checkBox22.UseVisualStyleBackColor = false;
             // 
@@ -1223,6 +1247,7 @@
             this.checkBox23.Name = "checkBox23";
             this.checkBox23.Size = new System.Drawing.Size(141, 35);
             this.checkBox23.TabIndex = 31;
+            this.checkBox23.Tag = "2";
             this.checkBox23.Text = "Diabetes";
             this.checkBox23.UseVisualStyleBackColor = false;
             // 
@@ -1236,6 +1261,7 @@
             this.checkBox24.Name = "checkBox24";
             this.checkBox24.Size = new System.Drawing.Size(121, 35);
             this.checkBox24.TabIndex = 30;
+            this.checkBox24.Tag = "1";
             this.checkBox24.Text = "Cancer";
             this.checkBox24.UseVisualStyleBackColor = false;
             // 
@@ -1290,6 +1316,7 @@
             this.maskedTextBox1.ResetOnSpace = false;
             this.maskedTextBox1.Size = new System.Drawing.Size(44, 29);
             this.maskedTextBox1.TabIndex = 64;
+            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.maskedTextBox1.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             // 
             // maskedTextBox3
@@ -1319,6 +1346,7 @@
             this.maskedTextBox4.ResetOnSpace = false;
             this.maskedTextBox4.Size = new System.Drawing.Size(44, 29);
             this.maskedTextBox4.TabIndex = 66;
+            this.maskedTextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.maskedTextBox4.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             this.maskedTextBox4.TextChanged += new System.EventHandler(this.maskedTextBox4_TextChanged);
             // 
@@ -1332,13 +1360,11 @@
             this.maskedTextBox5.Location = new System.Drawing.Point(798, 644);
             this.maskedTextBox5.Mask = "000.00";
             this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.PromptChar = '0';
             this.maskedTextBox5.ResetOnPrompt = false;
             this.maskedTextBox5.ResetOnSpace = false;
             this.maskedTextBox5.Size = new System.Drawing.Size(78, 29);
             this.maskedTextBox5.TabIndex = 67;
             this.maskedTextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.maskedTextBox5.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             this.maskedTextBox5.ValidatingType = typeof(int);
             // 
             // maskedTextBox6
@@ -1351,7 +1377,6 @@
             this.maskedTextBox6.Location = new System.Drawing.Point(1083, 644);
             this.maskedTextBox6.Mask = "00";
             this.maskedTextBox6.Name = "maskedTextBox6";
-            this.maskedTextBox6.PromptChar = '0';
             this.maskedTextBox6.ResetOnPrompt = false;
             this.maskedTextBox6.ResetOnSpace = false;
             this.maskedTextBox6.Size = new System.Drawing.Size(44, 29);
@@ -1369,7 +1394,6 @@
             this.maskedTextBox7.Location = new System.Drawing.Point(969, 345);
             this.maskedTextBox7.Mask = "00";
             this.maskedTextBox7.Name = "maskedTextBox7";
-            this.maskedTextBox7.PromptChar = '0';
             this.maskedTextBox7.ResetOnPrompt = false;
             this.maskedTextBox7.ResetOnSpace = false;
             this.maskedTextBox7.Size = new System.Drawing.Size(44, 29);
@@ -1388,7 +1412,6 @@
             this.maskedTextBox8.Location = new System.Drawing.Point(969, 386);
             this.maskedTextBox8.Mask = "00";
             this.maskedTextBox8.Name = "maskedTextBox8";
-            this.maskedTextBox8.PromptChar = '0';
             this.maskedTextBox8.ResetOnPrompt = false;
             this.maskedTextBox8.ResetOnSpace = false;
             this.maskedTextBox8.Size = new System.Drawing.Size(44, 29);

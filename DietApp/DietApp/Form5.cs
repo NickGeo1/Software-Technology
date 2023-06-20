@@ -80,7 +80,7 @@ namespace DietApp
         }
 
         //Takes a list of checkboxes and returns which are checked and which not
-        private static string returnChecked(List<CheckBox> all)
+        private List<int> returnChecked(List<CheckBox> all)
         {
             List<int> are_checked = new List<int>(); //bool list to specify which checkboxes are checked
             all.ForEach(cb =>
@@ -90,9 +90,8 @@ namespace DietApp
                 else
                     are_checked.Add(0);
             });
-            string are_checked_string = String.Join("", are_checked);
 
-            return are_checked_string;
+            return are_checked;
         }
 
         private void pictureBox25_Click(object sender, EventArgs e)
@@ -104,39 +103,55 @@ namespace DietApp
             var diet = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
             var reason = panel3.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
 
-            //lists of all panel checkboxes
-            var exclude_all = panel2.Controls.OfType<CheckBox>().ToList();
-            var meals_all = panel4.Controls.OfType<CheckBox>().Where(x => x.Checked).ToList();
-            var special_neads_all = panel5.Controls.OfType<CheckBox>().Where(x => x.Checked).ToList();
+            //lists of all panel checkboxes. Each list is sorted by the checkbox tag
+            var exclude_all = panel2.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
+            var meals_all = panel4.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
+            var special_needs_all = panel5.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
 
-            string exclude_string = returnChecked(exclude_all);
-            string meals_string = returnChecked(meals_all);
-            string special_needs_string = returnChecked(meals_all);
+            //binary values seperated with "','" for seperate insertion or "," for mass insertion
+            string exclude_string = String.Join("','", returnChecked(exclude_all));
+            string meals_string = String.Join(",", returnChecked(meals_all));
+            string special_needs_string = String.Join("','", returnChecked(special_needs_all));
 
-            MySqlCommand cmd = new MySqlCommand("insert into bmi values " +
-                "('"+ textBox6.Text + "','" + maskedTextBox1.Text + "','" + double.Parse(maskedTextBox3.Text) + "','" + maskedTextBox4.Text + "')",con);
-                 
-            MySqlCommand cmd2 = new MySqlCommand("insert into program(patient_id ,bmi,type_of_diet," +
-                "exclude,meals,special_needs," +
-                "reason_to_diet,desired_weight,weeks_of_dieting," +
-                "hours_of_sleep,hours_of_excersise) " +
-                "values('" + maskedTextBox2.Text + "','" + textBox6.Text + "','" + diet.Text.ToString() +
-                "','" + exclude_string + "','" + meals_string + "','" + special_needs_string +
-                "','" + reason.Text.ToString() + "','" + maskedTextBox5.Text + "','" + maskedTextBox6.Text +
-                "','" + maskedTextBox7.Text + "','" + maskedTextBox8.Text + "')", con);
+            //program data
+            MySqlCommand cmd = new MySqlCommand("insert into program" +
+            "(patient_id,type_of_diet," +
+            "meals," +
+            "reason_to_diet,desired_weight,weeks_of_dieting," +
+            "hours_of_sleep,hours_of_excersise) " +
+            "values('" + maskedTextBox2.Text + "','" + diet.Text.ToString() +
+            "','" + meals_string +
+            "','" + reason.Text.ToString() + "','" + maskedTextBox5.Text.Replace(",", ".") + "','" + maskedTextBox6.Text +
+            "','" + maskedTextBox7.Text + "','" + maskedTextBox8.Text + "')", con);
+
+            //bmi data
+            MySqlCommand cmd2 = new MySqlCommand("insert into bmi(patient_id, bmi_of_patient, age, weight, height) values " +
+                "('" + maskedTextBox2.Text + "','" + textBox6.Text + "','" + maskedTextBox1.Text + "','" + maskedTextBox3.Text.Replace(",",".") + "','" + maskedTextBox4.Text + "')",con);
+
+            //special needs data
+            string query = "insert into special_needs values('"+ maskedTextBox2.Text + "','" + special_needs_string + "')";
+            MySqlCommand cmd3 = new MySqlCommand(query,con);
+
+            //excluding data
+            string query2 = "insert into excluding values('" + maskedTextBox2.Text + "','" + exclude_string + "')";
+            MySqlCommand cmd4 = new MySqlCommand(query2, con);
 
             cmd.ExecuteReader();
             con.Close();
+
             con.Open();
             cmd2.ExecuteReader();
             con.Close();
 
-            MessageBox.Show("Successfully added bmi and patient program!");
+            con.Open();
+            cmd3.ExecuteReader();
+            con.Close();
 
-            //TODO:
-            //1: Fill excluding
-            //2: Fill bmi
-            //3: Fill special needs
+            con.Open();
+            cmd4.ExecuteReader();
+            con.Close();
+
+            MessageBox.Show("Successfully created patient program!");
         }
 
         private void button1_Click(object sender, EventArgs e)
