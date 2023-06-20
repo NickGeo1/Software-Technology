@@ -102,7 +102,12 @@ namespace DietApp
                 "values('" + maskedTextBox2.Text + "','" + textBox6.Text + "','" + diet.Text.ToString() + 
                 "','" + exclude_string + "','" + meals_string + "','" + special_needs_string + 
                 "','" + reason.Text.ToString() + "','" + maskedTextBox5.Text + "','" + maskedTextBox6.Text + 
-                "','" + maskedTextBox7.Text + "','" + maskedTextBox8.Text + "'", con);
+                "','" + maskedTextBox7.Text + "','" + maskedTextBox8.Text + "')", con);
+
+            //TODO:
+            //1: Fill excluding
+            //2: Fill bmi
+            //3: Fill special needs
         }
 
         private void button1_Click(object sender, EventArgs e)
