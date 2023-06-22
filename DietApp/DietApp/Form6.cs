@@ -21,36 +21,24 @@ namespace DietApp
         public Form6()
         {
             InitializeComponent();
-            connstr = GetConnectionString();
-        }
-
-        private static string GetConnectionString()
-        {
-            ConnectionStringSettingsCollection settings =
-                ConfigurationManager.ConnectionStrings;
-
-            return settings[0].ConnectionString; //return App.config connection string
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(maskedTextBox1.Text);
-            string connection_string = connstr;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = connection_string;
-            con.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from patient where ssn='" + maskedTextBox1.Text + "'", con);
-            MySqlDataReader myreader;
-            myreader = cmd.ExecuteReader();
-            if (myreader.Read())
+            label3.Text = "Full Name: ";
+            label5.Text = "SSN: ";
+            label4.Text = "ID: ";
+
+            List<List<string>> result_table = DatabaseManager.returnData("select * from patient where ssn='" + maskedTextBox1.Text + "'");
+
+            if (result_table.Count != 0)
             {
-                string fullname = myreader["First_name"].ToString() + " " + myreader["Last_name"].ToString();
-                string ssn = myreader["ssn"].ToString();
-                string id = myreader["id"].ToString();
-                label3.Text += myreader["First_name"].ToString() + " " + myreader["Last_name"].ToString();
-                label5.Text += myreader["ssn"].ToString();
-                label4.Text += myreader["id"].ToString();
+                string fullname = result_table[0][1] + " " + result_table[0][2];
+                string ssn = result_table[0][3];
+                string id = result_table[0][0];
+                label3.Text += fullname;
+                label5.Text += ssn;
+                label4.Text += id;
 
                 panel1.Visible = true;
             }
@@ -59,8 +47,6 @@ namespace DietApp
                 panel1.Visible = false;
                 MessageBox.Show("No patient found with this ssn");
             }
-
-            con.Close();
         }
            
 

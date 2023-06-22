@@ -52,9 +52,9 @@ namespace DietApp
 
                 }
             }
-            catch
+            catch(Exception exc)
             {
-                MessageBox.Show("Something went wrong during user registration. Please check the data and try again");
+                MessageBox.Show("Something went wrong during user registration. Please check the data and try again\n"+ exc.Message);
             }                   
         }
 

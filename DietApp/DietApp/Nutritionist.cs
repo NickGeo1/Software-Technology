@@ -43,7 +43,7 @@ namespace DietApp
 
             //bmi data
             DatabaseManager.updateData("insert into bmi(patient_id, bmi_of_patient, age, weight, height) values " +
-                "('" + bmi.patient_id + "','" + bmi.compute_BMI() + "','" + bmi.age + "','" + bmi.weight + "','" + bmi.height + "')");
+                "('" + bmi.patient_id + "','" + bmi.compute_BMI() + "','" + bmi.age + "','" + bmi.weight.ToString().Replace(",",".") + "','" + bmi.height + "')");
 
             //special needs data
             DatabaseManager.updateData("insert into special_needs values('" + plan.patient_id + "','" + plan.special_needs_string + "')");
