@@ -56,24 +56,17 @@ namespace DietApp
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            string connection_string = connstr;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = connection_string;
-            con.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from patient where id='" + maskedTextBox1.Text + "'", con);
-            MySqlDataReader myreader;
-            myreader = cmd.ExecuteReader();
-            if (myreader.Read())
+            List<List<string>> result_table = DatabaseManager.returnData("select * from patient where id='" + maskedTextBox1.Text + "'");
+
+            if (result_table.Count != 0)
             {
-                string fullname = myreader["First_name"].ToString() + " " + myreader["Last_name"].ToString();
+                string fullname = result_table[0][1] + " " + result_table[0][2];
                 MessageBox.Show(fullname);
             }
             else
             {
                 MessageBox.Show("Patient id Not found");
             }
-
-            con.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)

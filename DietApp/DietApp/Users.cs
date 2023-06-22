@@ -27,7 +27,7 @@ namespace DietApp
             if (role.Equals("Nutritionist"))
             {
                 //returns a single row with 2 columns or nothing
-                List<List<string>> result_table = DatabaseManagement.returnData("select First_name,Last_name from nutritionist where id='" + id + "' and password='" + password + "'");
+                List<List<string>> result_table = DatabaseManager.returnData("select First_name,Last_name from nutritionist where id='" + id + "' and password='" + password + "'");
 
                 if (result_table.Count != 0)
                 {

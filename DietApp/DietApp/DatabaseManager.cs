@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DietApp
 {
-    public static class DatabaseManagement
+    public static class DatabaseManager
     {
         private static string GetConnectionString()
         {
