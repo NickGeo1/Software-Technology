@@ -8,11 +8,10 @@ namespace DietApp
 {
     public class Nutritionist: Users
     {
-        public string password { get; }
 
-        public Nutritionist(string id, string role, string first_name, string last_name, string password) : base(id, role, first_name, last_name)
+        public Nutritionist(string id, string first_name, string last_name) : base(id, first_name, last_name)
         {
-            this.password = password;
+
         }
     }
 }

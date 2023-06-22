@@ -14,7 +14,7 @@ namespace DietApp
         public string nutritionist_id { get; }
         public string telephone { get; }
 
-        public Patient(string id, string role, string first_name, string last_name, string ssn, int postal_code, DateTime birthday, string nutritionist_id, string telephone) : base(id,role,first_name,last_name)
+        public Patient(string id, string first_name, string last_name, string ssn, int postal_code, DateTime birthday, string nutritionist_id, string telephone) : base(id,first_name,last_name)
         {
             this.ssn = ssn;
             this.postal_code = postal_code;

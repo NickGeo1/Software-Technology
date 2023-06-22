@@ -51,7 +51,7 @@ namespace DietApp
 
             MySqlCommand cmd2 = new MySqlCommand("insert into patient (id , First_name,Last_name,ssn,postal_code,birthday,nutritionist_id,telephone) values" +
             "('" + textBox4.Text + "','" + textBox1.Text + "','" + textBox2.Text + "','" + maskedTextBox2.Text + "','" + int.Parse(maskedTextBox3.Text) + 
-            "','" + birthday + "','" + Diet.diaitologos + "','" +  maskedTextBox1.Text + "')", con);
+            "','" + birthday + "','" + Diet.nutritionist.id + "','" +  maskedTextBox1.Text + "')", con);
             
             cmd.ExecuteReader();
             con.Close();

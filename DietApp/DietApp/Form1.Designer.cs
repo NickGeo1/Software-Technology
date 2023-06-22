@@ -51,9 +51,9 @@
             this.radioButton1.Location = new System.Drawing.Point(206, 136);
             this.radioButton1.MaximumSize = new System.Drawing.Size(600, 128);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(188, 38);
+            this.radioButton1.Size = new System.Drawing.Size(192, 38);
             this.radioButton1.TabIndex = 0;
-            this.radioButton1.Text = "Νutritionist";
+            this.radioButton1.Text = "Nutritionist";
             this.radioButton1.UseVisualStyleBackColor = false;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 

@@ -17,59 +17,31 @@ namespace DietApp
     {
         List<string> btn1 = new List<string>() { "enter (1).png", "enter.png" };
         public static string user_type;
-
         private static string connstr;
-
 
         public Form1()
         {
             InitializeComponent();
-            connstr = GetConnectionString();
             radioButton1.Checked = false; 
             radioButton2.Checked= true;
             panel1.Visible= false;
         }
 
-        private static string GetConnectionString()
-        {
-            ConnectionStringSettingsCollection settings =
-                ConfigurationManager.ConnectionStrings;
-
-            return settings[0].ConnectionString; //return App.config connection string
-
-        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            string connection_string = connstr;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = connection_string;
-            con.Open();
-            MySqlCommand cmd = new MySqlCommand("select id from nutritionist where id='" + maskedTextBox1.Text + "' and password='" + textBox2.Text + "'", con);
-            MySqlDataReader myreader;
-            myreader = cmd.ExecuteReader();
-            user_type = radioButton1.Text;
-            if (radioButton1.Checked)
+
+            if (radioButton2.Checked) //patient login
             {
-                if (myreader.Read())   
-                {
-                    Diet.diaitologos= myreader["id"].ToString();
-                    MessageBox.Show(Diet.diaitologos.ToString());
-                    this.Hide();
-                    Form2 form2 = new Form2();
-                    form2.Show();
-                }
-                else
-                    MessageBox.Show("Sorry wrong id or password. Please type your correct id and password");
+                Users.Login(this, radioButton2.Text);
             }
-            else
+            else //nutritionist login
             {
-                this.Hide();
-                Form3 form3 = new Form3();
-                form3.Show();
+                //user is Nutritionist object if login is successful, else null
+                Users user = Users.Login(this, radioButton1.Text, maskedTextBox1.Text, textBox2.Text);
+                Diet.nutritionist = (Nutritionist)user;
             }
 
-            con.Close();
         }
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
@@ -107,8 +79,9 @@ namespace DietApp
             }
         }
     }
+
     public static class Diet
     {
-        public static string diaitologos;
+        public static Nutritionist nutritionist;
     }
 }
