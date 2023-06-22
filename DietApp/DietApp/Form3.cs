@@ -20,20 +20,11 @@ namespace DietApp
         public Form3()
         {
             InitializeComponent();
-            connstr = GetConnectionString();
-            if (Form1.user_type == "Patient")
+
+            if (Form1.user_type.Equals("Patient"))
             {
                 button1.Visible= false;
             }
-        }
-
-        private static string GetConnectionString()
-        {
-            ConnectionStringSettingsCollection settings =
-                ConfigurationManager.ConnectionStrings;
-
-            return settings[0].ConnectionString; //return App.config connection string
-
         }
 
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
@@ -47,7 +38,7 @@ namespace DietApp
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if (Form1.user_type == "Nutritionist")
+            if (Form1.user_type.Equals("Nutritionist"))
             {
                 flag= false;
                 this.Close();

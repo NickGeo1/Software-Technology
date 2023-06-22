@@ -54,5 +54,11 @@ namespace DietApp
             }
         }
 
+        //Not functional yet
+        public void viewPlan()
+        {
+
+        }
+
     }
 }

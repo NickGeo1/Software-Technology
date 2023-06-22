@@ -17,7 +17,6 @@ namespace DietApp
     {
         List<string> btn1 = new List<string>() { "enter (1).png", "enter.png" };
         public static string user_type;
-        private static string connstr;
 
         public Form1()
         {
@@ -33,13 +32,15 @@ namespace DietApp
 
             if (radioButton2.Checked) //patient login
             {
+                user_type = radioButton2.Text;
                 Users.Login(this, radioButton2.Text);
             }
             else //nutritionist login
             {
+                user_type = radioButton1.Text;
                 //user is Nutritionist object if login is successful, else null
-                Users user = Users.Login(this, radioButton1.Text, maskedTextBox1.Text, textBox2.Text);
-                Diet.nutritionist = (Nutritionist)user;
+                Users nutritionist = Users.Login(this, radioButton1.Text, maskedTextBox1.Text, textBox2.Text);
+                Diet.active_user = (Nutritionist)nutritionist;
             }
 
         }
@@ -82,6 +83,6 @@ namespace DietApp
 
     public static class Diet
     {
-        public static Nutritionist nutritionist;
+        public static Nutritionist active_user;
     }
 }

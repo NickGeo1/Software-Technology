@@ -13,5 +13,32 @@ namespace DietApp
         {
 
         }
+
+        public void registerNewpatient()
+        {
+
+        }
+
+        //Not functional yet
+        public void registerNewnutritionist()
+        {
+
+        }
+
+        public void createNewplan()
+        {
+
+        }
+
+        public void searchPatient()
+        {
+
+        }
+
+        //Not functional yet
+        public void createWeeklydiet(DietProgram program)
+        {
+
+        }
     }
 }
