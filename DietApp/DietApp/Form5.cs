@@ -20,22 +20,13 @@ namespace DietApp
         double height = 0;
         double bmi = 0;
         bool flag = true;
-        private static string connstr;
+
+        private BMI patient_bmi;
 
         public Form5(string patient_id)
         {
             InitializeComponent();
-            connstr = GetConnectionString();
             maskedTextBox2.Text = patient_id;
-
-        }
-
-        private static string GetConnectionString()
-        {
-            ConnectionStringSettingsCollection settings =
-                ConfigurationManager.ConnectionStrings;
-
-            return settings[0].ConnectionString; //return App.config connection string
 
         }
 
@@ -61,9 +52,8 @@ namespace DietApp
             {
                 weight = Double.Parse(maskedTextBox3.Text);
                 height = Int32.Parse(maskedTextBox4.Text);
-                bmi = weight / Math.Pow(height / 100, 2);
-                bmi = Math.Ceiling(bmi);
-                textBox6.Text = bmi.ToString();
+                patient_bmi = new BMI(maskedTextBox2.Text, int.Parse(maskedTextBox1.Text), weight, height);
+                textBox6.Text = patient_bmi.compute_BMI().ToString();
             }
         }
 
@@ -73,9 +63,8 @@ namespace DietApp
             {
                 weight = Double.Parse(maskedTextBox3.Text);
                 height = Int32.Parse(maskedTextBox4.Text);
-                bmi = weight / Math.Pow(height / 100, 2);
-                bmi = Math.Ceiling(bmi);
-                textBox6.Text = bmi.ToString();
+                patient_bmi = new BMI(maskedTextBox2.Text, int.Parse(maskedTextBox1.Text), weight, height);
+                textBox6.Text = patient_bmi.compute_BMI().ToString();
             }
         }
 
@@ -96,10 +85,6 @@ namespace DietApp
 
         private void pictureBox25_Click(object sender, EventArgs e)
         {
-            string connection_string = connstr;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = connection_string;
-            con.Open();
             var diet = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
             var reason = panel3.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
 
@@ -113,43 +98,10 @@ namespace DietApp
             string meals_string = String.Join(",", returnChecked(meals_all));
             string special_needs_string = String.Join("','", returnChecked(special_needs_all));
 
-            //program data
-            MySqlCommand cmd = new MySqlCommand("insert into program" +
-            "(patient_id,type_of_diet," +
-            "meals," +
-            "reason_to_diet,desired_weight,weeks_of_dieting," +
-            "hours_of_sleep,hours_of_excersise) " +
-            "values('" + maskedTextBox2.Text + "','" + diet.Text.ToString() +
-            "','" + meals_string +
-            "','" + reason.Text.ToString() + "','" + maskedTextBox5.Text.Replace(",", ".") + "','" + maskedTextBox6.Text +
-            "','" + maskedTextBox7.Text + "','" + maskedTextBox8.Text + "')", con);
+            DietProgram plan = new DietProgram(maskedTextBox2.Text, diet.Text, meals_string, reason.Text, double.Parse(maskedTextBox5.Text.Replace(",", ".")), 
+                int.Parse(maskedTextBox6.Text), int.Parse(maskedTextBox7.Text), int.Parse(maskedTextBox8.Text), exclude_string, special_needs_string);
 
-            //bmi data
-            MySqlCommand cmd2 = new MySqlCommand("insert into bmi(patient_id, bmi_of_patient, age, weight, height) values " +
-                "('" + maskedTextBox2.Text + "','" + textBox6.Text + "','" + maskedTextBox1.Text + "','" + maskedTextBox3.Text.Replace(",",".") + "','" + maskedTextBox4.Text + "')",con);
-
-            //special needs data
-            string query = "insert into special_needs values('"+ maskedTextBox2.Text + "','" + special_needs_string + "')";
-            MySqlCommand cmd3 = new MySqlCommand(query,con);
-
-            //excluding data
-            string query2 = "insert into excluding values('" + maskedTextBox2.Text + "','" + exclude_string + "')";
-            MySqlCommand cmd4 = new MySqlCommand(query2, con);
-
-            cmd.ExecuteReader();
-            con.Close();
-
-            con.Open();
-            cmd2.ExecuteReader();
-            con.Close();
-
-            con.Open();
-            cmd3.ExecuteReader();
-            con.Close();
-
-            con.Open();
-            cmd4.ExecuteReader();
-            con.Close();
+            Diet.active_user.createNewplan(plan, patient_bmi);
 
             MessageBox.Show("Successfuly created patient program!");
 
