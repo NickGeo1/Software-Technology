@@ -18,7 +18,7 @@ namespace DietApp
         {
             this.ssn = ssn;
             this.postal_code = postal_code;
-            this.birthday = birthday.ToString("dd/MM/yyyy"); //return birthday as string in this format
+            this.birthday = birthday.ToString("yyyy/MM/dd"); //return birthday as string in this format, in order to store it in database
             this.nutritionist_id = nutritionist_id;
             this.telephone = telephone;
         }

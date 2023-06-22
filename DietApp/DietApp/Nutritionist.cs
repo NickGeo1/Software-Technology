@@ -14,9 +14,13 @@ namespace DietApp
 
         }
 
-        public void registerNewpatient()
+        public void registerNewpatient(Patient patient)
         {
+            DatabaseManager.updateData("insert into users(id, role) values('" + patient.id + "','patient')");
 
+            DatabaseManager.updateData("insert into patient (id , First_name,Last_name,ssn,postal_code,birthday,nutritionist_id,telephone) values" +
+            "('" + patient.id + "','" + patient.first_name + "','" + patient.last_name + "','" + patient.ssn + "','" + patient.postal_code +
+            "','" + patient.birthday + "','" + Diet.active_user.id + "','" + patient.telephone + "')");
         }
 
         //Not functional yet

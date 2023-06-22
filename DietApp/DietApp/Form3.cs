@@ -15,7 +15,6 @@ namespace DietApp
     public partial class Form3 : Form
     {   
         bool flag = true;
-        private static string connstr;
 
         public Form3()
         {

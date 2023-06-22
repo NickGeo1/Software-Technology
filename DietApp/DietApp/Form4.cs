@@ -18,55 +18,44 @@ namespace DietApp
     {
         
         bool flag = true;
-        private static string connstr;
 
         public Form4()
         {
             InitializeComponent();
-            connstr = GetConnectionString();
             Random rnd= new Random();
             string id = rnd.Next(999999).ToString().PadLeft(6, '0');
             textBox4.Text = id;
 
         }
 
-        private static string GetConnectionString()
-        {
-            ConnectionStringSettingsCollection settings =
-                ConfigurationManager.ConnectionStrings;
-
-            return settings[0].ConnectionString; //return App.config connection string
-
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            string connection_string = connstr;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = connection_string;
-            con.Open();
-            MySqlCommand cmd = new MySqlCommand("insert into users(id, role) values('" + textBox4.Text + "','patient')", con);
+            try
+            {
+                //patient register by nutritionist
+                if (radioButton1.Checked)
+                {
+                    Patient patient = new Patient(textBox4.Text, textBox1.Text, textBox2.Text, maskedTextBox2.Text,
+                        int.Parse(maskedTextBox3.Text), dateTimePicker1.Value, Diet.active_user.id, maskedTextBox1.Text);
 
-            string birthday = dateTimePicker1.Value.ToString("yyyy/MM/dd"); //change date format to yyyy/MM/dd
+                    Diet.active_user.registerNewpatient(patient);
 
-            MySqlCommand cmd2 = new MySqlCommand("insert into patient (id , First_name,Last_name,ssn,postal_code,birthday,nutritionist_id,telephone) values" +
-            "('" + textBox4.Text + "','" + textBox1.Text + "','" + textBox2.Text + "','" + maskedTextBox2.Text + "','" + int.Parse(maskedTextBox3.Text) + 
-            "','" + birthday + "','" + Diet.active_user.id + "','" +  maskedTextBox1.Text + "')", con);
-            
-            cmd.ExecuteReader();
-            con.Close();
+                    MessageBox.Show("Patient " + textBox4.Text + " successfuly registered!");
+                    MessageBox.Show("Lets create now his diet plan!");
 
-            con.Open();
-            cmd2.ExecuteReader();
-            con.Close();
+                    flag = false;
+                    new Form5(patient.id).Show(); //pass patient id on form5
+                    this.Close();
+                }
+                else //nutritionist register by nutritionist (TODO)
+                {
 
-            MessageBox.Show("Patient " + textBox4.Text + " successfuly registered!");
-            MessageBox.Show("Lets create now his diet plan!");
-
-            flag = false;
-            new Form5(textBox4.Text).Show(); //pass patient id on form5
-            this.Close();
-
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong during user registration. Please check the data and try again");
+            }                   
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
