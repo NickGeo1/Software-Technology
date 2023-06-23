@@ -25,31 +25,9 @@ namespace DietApp
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            label3.Text = "Full Name: ";
-            label5.Text = "SSN: ";
-            label4.Text = "ID: ";
-
-            List<List<string>> result_table = DatabaseManager.returnData("select * from patient where ssn='" + maskedTextBox1.Text + "'");
-
-            if (result_table.Count != 0)
-            {
-                string fullname = result_table[0][1] + " " + result_table[0][2];
-                string ssn = result_table[0][3];
-                string id = result_table[0][0];
-                label3.Text += fullname;
-                label5.Text += ssn;
-                label4.Text += id;
-
-                panel1.Visible = true;
-            }
-            else
-            {
-                panel1.Visible = false;
-                MessageBox.Show("No patient found with this ssn");
-            }
+            Diet.active_user.searchPatient(label3, label5, label4, panel1, maskedTextBox1.Text);
         }
            
-
 
         private void maskedTextBox1_Enter(object sender, EventArgs e)
         {

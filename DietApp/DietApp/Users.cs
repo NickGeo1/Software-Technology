@@ -55,9 +55,19 @@ namespace DietApp
         }
 
         //Not functional yet
-        public void viewPlan()
+        public static void viewPlan(string patient_id)
         {
+            List<List<string>> result_table = DatabaseManager.returnData("select * from patient where id='" + patient_id + "'");
 
+            if (result_table.Count != 0)
+            {
+                string fullname = result_table[0][1] + " " + result_table[0][2];
+                MessageBox.Show(fullname);
+            }
+            else
+            {
+                MessageBox.Show("Patient id Not found");
+            }
         }
 
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DietApp
 {
@@ -53,9 +54,29 @@ namespace DietApp
 
         }
 
-        public void searchPatient()
+        public void searchPatient(Label full_name, Label ssn, Label id, Panel datapanel, string patient_ssn)
         {
+            full_name.Text = "Full Name: ";
+            ssn.Text = "SSN: ";
+            id.Text = "ID: ";
 
+            List<List<string>> result_table = DatabaseManager.returnData("select * from patient where ssn='" + patient_ssn + "'");
+
+            if (result_table.Count != 0)
+            {
+                string fullname = result_table[0][1] + " " + result_table[0][2];
+                string patient_id = result_table[0][0];
+                full_name.Text += fullname;
+                ssn.Text += patient_ssn;
+                id.Text += patient_id;
+
+                datapanel.Visible = true;
+            }
+            else
+            {
+                datapanel.Visible = false;
+                MessageBox.Show("No patient found with this ssn");
+            }
         }
 
         //Not functional yet

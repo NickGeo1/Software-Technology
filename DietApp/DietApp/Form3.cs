@@ -55,17 +55,7 @@ namespace DietApp
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            List<List<string>> result_table = DatabaseManager.returnData("select * from patient where id='" + maskedTextBox1.Text + "'");
-
-            if (result_table.Count != 0)
-            {
-                string fullname = result_table[0][1] + " " + result_table[0][2];
-                MessageBox.Show(fullname);
-            }
-            else
-            {
-                MessageBox.Show("Patient id Not found");
-            }
+            Users.viewPlan(maskedTextBox1.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
