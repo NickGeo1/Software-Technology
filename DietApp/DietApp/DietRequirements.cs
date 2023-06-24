@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DietApp
 {
-    public class DietProgram
+    public class DietRequirements
     {
         public string patient_id { get; }
         public string type_of_diet { get; }
@@ -19,7 +19,7 @@ namespace DietApp
         public string exclude_string { get;  }
         public string special_needs_string { get; }
 
-        public DietProgram(string patient_id, string type_of_diet, string meal_string ,string reason_to_diet, double desired_weight, 
+        public DietRequirements(string patient_id, string type_of_diet, string meal_string ,string reason_to_diet, double desired_weight, 
             int weeks_of_dieting, int hours_of_sleep, int hours_of_excersise, string exclude_string, string special_needs_string)
         {
             this.patient_id = patient_id;

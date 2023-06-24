@@ -109,8 +109,8 @@
   <ItemGroup>
     <Compile Include="BMI.cs" />
     <Compile Include="DatabaseManager.cs" />
-    <Compile Include="DietProgram.cs" />
-    <Compile Include="Eating.cs" />
+    <Compile Include="DietRequirements.cs" />
+    <Compile Include="WeeklyProgram.cs" />
     <Compile Include="Food.cs" />
     <Compile Include="Nutritionist.cs" />
     <Compile Include="Patient.cs" />

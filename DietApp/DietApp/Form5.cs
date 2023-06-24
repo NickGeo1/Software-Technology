@@ -98,7 +98,7 @@ namespace DietApp
             string meals_string = String.Join(",", returnChecked(meals_all));
             string special_needs_string = String.Join("','", returnChecked(special_needs_all));
 
-            DietProgram plan = new DietProgram(maskedTextBox2.Text, diet.Text, meals_string, reason.Text, double.Parse(maskedTextBox5.Text.Replace(",", ".")), 
+            DietRequirements plan = new DietRequirements(maskedTextBox2.Text, diet.Text, meals_string, reason.Text, double.Parse(maskedTextBox5.Text.Replace(",", ".")), 
                 int.Parse(maskedTextBox6.Text), int.Parse(maskedTextBox7.Text), int.Parse(maskedTextBox8.Text), exclude_string, special_needs_string);
 
             Diet.active_user.createNewplan(plan, patient_bmi);

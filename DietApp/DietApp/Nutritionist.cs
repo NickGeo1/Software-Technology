@@ -30,7 +30,7 @@ namespace DietApp
 
         }
 
-        public void createNewplan(DietProgram plan, BMI bmi)
+        public void createNewplan(DietRequirements plan, BMI bmi)
         {
             //program data
             DatabaseManager.updateData("insert into program(patient_id,type_of_diet," +
@@ -80,7 +80,7 @@ namespace DietApp
         }
 
         //Not functional yet
-        public void createWeeklydiet(DietProgram program)
+        public void createWeeklydiet(DietRequirements program)
         {
 
         }
