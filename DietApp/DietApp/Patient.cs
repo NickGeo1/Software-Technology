@@ -22,7 +22,7 @@ namespace DietApp
             this.birthday = birthday.ToString("yyyy/MM/dd"); //return birthday as string in this format, in order to store it in database
             this.nutritionist_id = nutritionist_id;
             this.telephone = telephone;
-            //this.weekly_diet = retreiveWeeklyProgram(id);
+            //this.weekly_diet = getWeeklyProgram(id);
         }
 
 
