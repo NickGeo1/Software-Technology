@@ -54,20 +54,44 @@ namespace DietApp
             }
         }
 
-        //Not functional yet
+        //Not functional yet //3//
         public static void viewPlan(string patient_id)
         {
-            List<List<string>> result_table = DatabaseManager.returnData("select * from patient where id='" + patient_id + "'");
+            Patient patient = null;
 
-            if (result_table.Count != 0)
+            if (Diet.active_user == null) //patient is viewing plan
             {
-                string fullname = result_table[0][1] + " " + result_table[0][2];
-                MessageBox.Show(fullname);
+                List<List<string>> result_table = DatabaseManager.returnData("select * from patient where id='" + patient_id + "'");
+
+                if (result_table.Count == 0)
+                {
+                    MessageBox.Show("Patient with id " + patient_id + " not found");
+                    return;
+                }
+
+                patient = new Patient(result_table[0][0], result_table[0][1], result_table[0][2], result_table[0][3], int.Parse(result_table[0][4]), DateTime.Parse(result_table[0][5]), result_table[0][6], result_table[0][7]);
             }
-            else
+            else //Nutritionist is viewing plan
             {
-                MessageBox.Show("Patient id Not found");
+                patient = Diet.active_user.registeredPatients.Find(p => p.id.Equals(patient_id));
+
+                if (patient == null)
+                {
+                    MessageBox.Show("Patient with id " + patient_id + " not found");
+                    return;
+                }
+                   
             }
+
+            if(patient.weekly_diet.Count == 0)
+            {
+                MessageBox.Show("Patient with id " + patient_id + " does not have weekly diet yet");
+                return;
+            }
+
+            //1 After Patient object creation, weekly_diet list should be ready
+            //2 Iterate weekly_diet list and use all the 7 DailyProgram objects to print the plan
+
         }
 
     }

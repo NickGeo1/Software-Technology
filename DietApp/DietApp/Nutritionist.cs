@@ -9,11 +9,26 @@ namespace DietApp
 {
     public class Nutritionist: Users
     {
+        public List<Patient> registeredPatients { get; }
 
         public Nutritionist(string id, string first_name, string last_name) : base(id, first_name, last_name)
         {
-
+            this.registeredPatients = returnPatients(id);
         }
+
+        private static List<Patient> returnPatients(string nutritionist_id)
+        {
+            List<Patient> patients = new List<Patient>();
+            List<List<string>> result_table = DatabaseManager.returnData("select * from patient where nutritionist_id=" + nutritionist_id);
+
+            foreach (List<string> patient_atrs in result_table) //iterate each list of patient attributes
+            {
+                //Add patient object to the patients list
+                patients.Add(new Patient(patient_atrs[0], patient_atrs[1], patient_atrs[2], patient_atrs[3], int.Parse(patient_atrs[4]), DateTime.Parse(patient_atrs[5]), patient_atrs[6], patient_atrs[7]));
+            }
+
+            return patients;
+        } 
 
         public void registerNewpatient(Patient patient)
         {
@@ -22,6 +37,8 @@ namespace DietApp
             DatabaseManager.updateData("insert into patient (id , First_name,Last_name,ssn,postal_code,birthday,nutritionist_id,telephone) values" +
             "('" + patient.id + "','" + patient.first_name + "','" + patient.last_name + "','" + patient.ssn + "','" + patient.postal_code +
             "','" + patient.birthday + "','" + Diet.active_user.id + "','" + patient.telephone + "')");
+
+            registeredPatients.Add(patient);
         }
 
         //Not functional yet
@@ -60,15 +77,14 @@ namespace DietApp
             ssn.Text = "SSN: ";
             id.Text = "ID: ";
 
-            List<List<string>> result_table = DatabaseManager.returnData("select * from patient where ssn='" + patient_ssn + "'");
+            Patient patient = registeredPatients.Find(p => p.ssn.Equals(patient_ssn));
 
-            if (result_table.Count != 0)
+            if (patient != null)
             {
-                string fullname = result_table[0][1] + " " + result_table[0][2];
-                string patient_id = result_table[0][0];
+                string fullname = patient.first_name + " " + patient.last_name;
                 full_name.Text += fullname;
-                ssn.Text += patient_ssn;
-                id.Text += patient_id;
+                ssn.Text += patient.ssn;
+                id.Text += patient.id;
 
                 datapanel.Visible = true;
             }
@@ -79,10 +95,12 @@ namespace DietApp
             }
         }
 
-        //Not functional yet
-        public void createWeeklydiet(DietRequirements program)
+        //Not functional yet //1//
+        public void createWeeklydiet(DietRequirements program, BMI bmi)
         {
-
+            //1 check program,bmi object details
+            //2 search database table (food) for appropriate foods
+            //3 store appropriate foods in database (eating) table
         }
     }
 }

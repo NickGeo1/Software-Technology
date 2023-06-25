@@ -17,7 +17,6 @@ namespace DietApp
     public partial class Form6 : Form
     {
         bool flag = true;
-        private static string connstr;
         public Form6()
         {
             InitializeComponent();

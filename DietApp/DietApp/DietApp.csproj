@@ -110,7 +110,7 @@
     <Compile Include="BMI.cs" />
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="DietRequirements.cs" />
-    <Compile Include="WeeklyProgram.cs" />
+    <Compile Include="DailyProgram.cs" />
     <Compile Include="Food.cs" />
     <Compile Include="Nutritionist.cs" />
     <Compile Include="Patient.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DietApp
 {
-    public class WeeklyProgram
+    public class DailyProgram
     {
         public string day { get; }
         public Food breakfast { get; }
@@ -15,7 +15,7 @@ namespace DietApp
         public Food dinner { get; }
         public string patient_id { get; }
 
-        public WeeklyProgram(string day, Food breakfast, Food lunch, Food snack, Food dinner, string patient_id, string id_and_day)
+        public DailyProgram(string day, Food breakfast, Food lunch, Food snack, Food dinner, string patient_id, string id_and_day)
         {
             this.day = day;
             this.breakfast = breakfast;

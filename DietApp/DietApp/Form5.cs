@@ -103,6 +103,9 @@ namespace DietApp
 
             Diet.active_user.createNewplan(plan, patient_bmi);
 
+            //Not functional yet
+            Diet.active_user.createWeeklydiet(plan, patient_bmi);
+
             MessageBox.Show("Successfuly created patient program!");
 
             flag = false;
