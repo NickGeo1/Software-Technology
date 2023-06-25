@@ -96,11 +96,14 @@ namespace DietApp
         }
 
         //Not functional yet //1//
-        public void createWeeklydiet(DietRequirements program, BMI bmi)
+        public void createWeeklydiet(DietRequirements program, BMI bmi, Patient patient)
         {
             //1 check program,bmi object details
             //2 search database table (food) for appropriate foods
-            //3 store appropriate foods in database (eating) table
+            //3 create 7 DailyProgram Objects from the foods
+            //4 store the 7 DailyProgram Objects in a weekly_diet List and store it to patient object: patient.weekly_diet = weekly_diet
+            //5 store the appropriate foods in database table (eating)
+
         }
     }
 }

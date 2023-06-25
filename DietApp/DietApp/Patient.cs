@@ -31,7 +31,7 @@ namespace DietApp
         //2 create all 7 DailyProgram objects, each object contains 4 Food objects (create them as well)
         //3 store the DailyProgram objects in weekly_diet list
 
-        /*private static List<DailyProgram> retreiveWeeklyProgram(string patient_id)
+        /*public static List<DailyProgram> getWeeklyProgram(string patient_id)
         {
             List<DailyProgram> weekly_program = new List<DailyProgram>();
             List<List<string>> result_table = DatabaseManager.returnData("select * from eating where patient_id=" + patient_id);

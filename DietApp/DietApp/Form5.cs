@@ -18,15 +18,18 @@ namespace DietApp
         List<string> PANEL2 = new List<string>(){};
         double weight = 0;
         double height = 0;
-        double bmi = 0;
         bool flag = true;
 
         private BMI patient_bmi;
+        private Patient patient;
 
-        public Form5(string patient_id)
+        public Form5(Patient patient)
         {
             InitializeComponent();
-            maskedTextBox2.Text = patient_id;
+            if (patient == null)
+                maskedTextBox2.Text = "000000";
+            else
+                maskedTextBox2.Text = patient.id;
 
         }
 
@@ -85,32 +88,47 @@ namespace DietApp
 
         private void pictureBox25_Click(object sender, EventArgs e)
         {
-            var diet = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-            var reason = panel3.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            patient = Diet.active_user.registeredPatients.Find(p => p.id.Equals(maskedTextBox2.Text));
 
-            //lists of all panel checkboxes. Each list is sorted by the checkbox tag
-            var exclude_all = panel2.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
-            var meals_all = panel4.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
-            var special_needs_all = panel5.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
+            if (patient == null)
+            {
+                MessageBox.Show("There is not any registered patient with this id yet");
+                return;
+            }
 
-            //binary values seperated with "','" for seperate insertion or "," for mass insertion
-            string exclude_string = String.Join("','", returnChecked(exclude_all));
-            string meals_string = String.Join(",", returnChecked(meals_all));
-            string special_needs_string = String.Join("','", returnChecked(special_needs_all));
+            try
+            {
+                var diet = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+                var reason = panel3.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
 
-            DietRequirements plan = new DietRequirements(maskedTextBox2.Text, diet.Text, meals_string, reason.Text, double.Parse(maskedTextBox5.Text.Replace(",", ".")), 
-                int.Parse(maskedTextBox6.Text), int.Parse(maskedTextBox7.Text), int.Parse(maskedTextBox8.Text), exclude_string, special_needs_string);
+                //lists of all panel checkboxes. Each list is sorted by the checkbox tag
+                var exclude_all = panel2.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
+                var meals_all = panel4.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
+                var special_needs_all = panel5.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
 
-            Diet.active_user.createNewplan(plan, patient_bmi);
+                //binary values seperated with "','" for seperate insertion or "," for mass insertion
+                string exclude_string = String.Join("','", returnChecked(exclude_all));
+                string meals_string = String.Join(",", returnChecked(meals_all));
+                string special_needs_string = String.Join("','", returnChecked(special_needs_all));
 
-            //Not functional yet
-            Diet.active_user.createWeeklydiet(plan, patient_bmi);
+                DietRequirements plan = new DietRequirements(maskedTextBox2.Text, diet.Text, meals_string, reason.Text, double.Parse(maskedTextBox5.Text.Replace(",", ".")),
+                    int.Parse(maskedTextBox6.Text), int.Parse(maskedTextBox7.Text), int.Parse(maskedTextBox8.Text), exclude_string, special_needs_string);
 
-            MessageBox.Show("Successfuly created patient program!");
+                Diet.active_user.createNewplan(plan, patient_bmi);
 
-            flag = false;
-            this.Close();
-            new Form2().Show(); //go back to main menu
+                //Not functional yet
+                Diet.active_user.createWeeklydiet(plan, patient_bmi, patient);
+
+                MessageBox.Show("Successfuly created patient program!");
+
+                flag = false;
+                this.Close();
+                new Form2().Show(); //go back to main menu
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Something went wrong during plan making, please check your data and try again\n" + ex.Message);
+            }
 
         }
 

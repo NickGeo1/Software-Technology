@@ -44,7 +44,7 @@ namespace DietApp
                     MessageBox.Show("Lets create now his diet plan!");
 
                     flag = false;
-                    new Form5(patient.id).Show(); //pass patient id on form5
+                    new Form5(patient).Show(); //pass patient on form5
                     this.Close();
                 }
                 else //nutritionist register by nutritionist (TODO)
