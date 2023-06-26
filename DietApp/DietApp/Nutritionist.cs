@@ -49,8 +49,10 @@ namespace DietApp
 
         }
 
-        public void createNewplan(DietRequirements plan, BMI bmi)
+        public void createNewplan(DietRequirements plan, BMI bmi, string boolean_special_needs, string boolean_exclude)
         {
+            //binary version of 
+
             //program data
             DatabaseManager.updateData("insert into program(patient_id,type_of_diet," +
             "meals," +
@@ -66,10 +68,10 @@ namespace DietApp
                 "('" + bmi.patient_id + "','" + bmi.compute_BMI() + "','" + bmi.age + "','" + bmi.weight.ToString().Replace(",",".") + "','" + bmi.height + "')");
 
             //special needs data
-            DatabaseManager.updateData("insert into special_needs values('" + plan.patient_id + "','" + plan.special_needs_string + "')");
+            DatabaseManager.updateData("insert into special_needs values('" + plan.patient_id + "','" + boolean_special_needs + "')");
 
             //excluding data
-            DatabaseManager.updateData("insert into excluding values('" + plan.patient_id + "','" + plan.exclude_string + "')");
+            DatabaseManager.updateData("insert into excluding values('" + plan.patient_id + "','" + boolean_exclude + "')");
 
         }
 

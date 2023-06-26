@@ -21,7 +21,7 @@ namespace DietApp
         public double bmr { get; }
 
         public DietRequirements(string patient_id,string type_of_diet, string meal_string ,string reason_to_diet, double desired_weight, 
-            int weeks_of_dieting, int hours_of_sleep, int hours_of_excersise, string exclude_string, string special_needs_string,double bmr)
+            int weeks_of_dieting, int hours_of_sleep, int hours_of_excersise, string exclude_string, string special_needs_string, double bmr)
         {
             this.patient_id = patient_id;
             this.type_of_diet = type_of_diet;
@@ -35,6 +35,5 @@ namespace DietApp
             this.special_needs_string = special_needs_string;
             this.bmr = bmr;
         }
-
     }
 }

@@ -70,7 +70,7 @@ namespace DietApp
                 weight = Double.Parse(maskedTextBox3.Text);
                 height = Int32.Parse(maskedTextBox4.Text);
                 var sex = panel6.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-                patient_bmi = new BMI(maskedTextBox2.Text,sex.ToString(), int.Parse(maskedTextBox1.Text), weight, height);
+                patient_bmi = new BMI(maskedTextBox2.Text, sex.ToString(), int.Parse(maskedTextBox1.Text), weight, height);
                 textBox6.Text = patient_bmi.compute_BMI().ToString();
                 bmr = patient_bmi.compute_BMR();
             }
@@ -105,21 +105,29 @@ namespace DietApp
                 var diet = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text;
                 var reason = panel3.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text;
 
-                //lists of all panel checkboxes. Each list is sorted by the checkbox tag
-                var exclude_all = panel2.Controls.OfType<CheckBox>().Where(r => r.Checked).OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
-                var meals_all = panel4.Controls.OfType<CheckBox>().Where(chkbox => chkbox.Checked).OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
-                var special_needs_all = panel5.Controls.OfType<CheckBox>().Where(chkbox => chkbox.Checked).OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
+                //lists of panel checkboxes. Each list is sorted by the checkbox tag
+                var exclude_all = panel2.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
+                var special_needs_all = panel5.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
 
-                //binary values seperated with "','" for seperate insertion or "," for mass insertion
-                string exclude_string = String.Join(",", exclude_all.Select(chkbox => chkbox.Text));
-                string meals_string = String.Join(",", meals_all.Select(chkbox => chkbox.Text));
-                string special_needs_string = String.Join(",", special_needs_all.Select(chkbox => chkbox.Text));
+                //lists of only checked checkboxes
+                var exclude = exclude_all.Where(chkbox => chkbox.Checked).ToList();
+                var special_needs = special_needs_all.Where(chkbox => chkbox.Checked).ToList();
+                var meals = panel4.Controls.OfType<CheckBox>().Where(chkbox => chkbox.Checked).OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
+
+                //binary values seperated with "','" for seperate column insertion 
+                string binary_exclude = String.Join("','", returnChecked(exclude_all));
+                string binary_special_needs = String.Join("','", returnChecked(special_needs_all));
+
+                //lists of checked checkbox values as strings
+                string exclude_string = String.Join(",", exclude.Select(chkbox => chkbox.Text));
+                string meals_string = String.Join(",", meals.Select(chkbox => chkbox.Text));
+                string special_needs_string = String.Join(",", special_needs.Select(chkbox => chkbox.Text));
 
 
                 DietRequirements plan = new DietRequirements(maskedTextBox2.Text, diet, meals_string, reason, double.Parse(maskedTextBox5.Text.Replace(",", ".")),
-                    int.Parse(maskedTextBox6.Text), int.Parse(maskedTextBox7.Text), int.Parse(maskedTextBox8.Text), exclude_string, special_needs_string,bmr);
+                    int.Parse(maskedTextBox6.Text), int.Parse(maskedTextBox7.Text), int.Parse(maskedTextBox8.Text), exclude_string, special_needs_string, bmr);
 
-                Diet.active_user.createNewplan(plan, patient_bmi);
+                Diet.active_user.createNewplan(plan, patient_bmi, binary_exclude, binary_special_needs);
 
                 //Not functional yet
                 Diet.active_user.createWeeklydiet(plan, patient_bmi, patient);
