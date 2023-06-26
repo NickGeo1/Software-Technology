@@ -99,7 +99,44 @@ namespace DietApp
         public void createWeeklydiet(DietRequirements program, BMI bmi, Patient patient)
         {
             //1 check program,bmi object details
+            double bmr = program.bmr;
+            double cal_intake;
+            if (program.hours_of_excersise < 5)
+            {
+                cal_intake = 1.2 * bmr;
+            }
+            else if(program.hours_of_excersise < 10)
+            {
+                cal_intake = 1.375 * bmr;
+            }
+            else if(program.hours_of_excersise<15)
+            {
+                cal_intake= 1.55*bmr;
+            }
+            else if (program.hours_of_excersise<20)
+            {
+                cal_intake= 1.725*bmr;
+            }
+            else 
+            {
+                cal_intake=1.9*bmr;
+            }
+            int days = program.weeks_of_dieting * 7;
+            if (program.reason_to_diet == "Weight Loss")
+            {
+                double kg_to_lose = bmi.weight - program.desired_weight;
+                double weight_per_day = kg_to_lose / days;
+                cal_intake -= (weight_per_day * 3500 / 0.5);
+            }
+            else if (program.reason_to_diet == "Weight Gain") 
+            {
+                double kg_to_gain = program.desired_weight+bmi.weight;
+                double weight_per_day = kg_to_gain / days;
+                cal_intake += (weight_per_day * 3500 / 0.5);
+            }
             //2 search database table (food) for appropriate foods
+            string diet_type = program.type_of_diet;
+            var meals = program.meal_string;
             //3 create 7 DailyProgram Objects from the foods
             //4 store the 7 DailyProgram Objects in a weekly_diet List and store it to patient object: patient.weekly_diet = weekly_diet
             //5 store the appropriate foods in database table (eating)

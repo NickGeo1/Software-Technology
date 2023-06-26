@@ -18,9 +18,10 @@ namespace DietApp
         public int hours_of_excersise { get; }
         public string exclude_string { get;  }
         public string special_needs_string { get; }
+        public double bmr { get; }
 
-        public DietRequirements(string patient_id, string type_of_diet, string meal_string ,string reason_to_diet, double desired_weight, 
-            int weeks_of_dieting, int hours_of_sleep, int hours_of_excersise, string exclude_string, string special_needs_string)
+        public DietRequirements(string patient_id,string type_of_diet, string meal_string ,string reason_to_diet, double desired_weight, 
+            int weeks_of_dieting, int hours_of_sleep, int hours_of_excersise, string exclude_string, string special_needs_string,double bmr)
         {
             this.patient_id = patient_id;
             this.type_of_diet = type_of_diet;
@@ -32,6 +33,7 @@ namespace DietApp
             this.hours_of_excersise = hours_of_excersise;
             this.exclude_string = exclude_string;
             this.special_needs_string = special_needs_string;
+            this.bmr = bmr;
         }
 
     }

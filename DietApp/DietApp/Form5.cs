@@ -19,6 +19,7 @@ namespace DietApp
         double weight = 0;
         double height = 0;
         bool flag = true;
+        double bmr= 0;
 
         private BMI patient_bmi;
         private Patient patient;
@@ -55,8 +56,10 @@ namespace DietApp
             {
                 weight = Double.Parse(maskedTextBox3.Text);
                 height = Int32.Parse(maskedTextBox4.Text);
-                patient_bmi = new BMI(maskedTextBox2.Text, int.Parse(maskedTextBox1.Text), weight, height);
+                var sex = panel6.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+                patient_bmi = new BMI(maskedTextBox2.Text, sex.ToString(), int.Parse(maskedTextBox1.Text), weight, height);
                 textBox6.Text = patient_bmi.compute_BMI().ToString();
+                bmr=patient_bmi.compute_BMR();
             }
         }
 
@@ -66,8 +69,10 @@ namespace DietApp
             {
                 weight = Double.Parse(maskedTextBox3.Text);
                 height = Int32.Parse(maskedTextBox4.Text);
-                patient_bmi = new BMI(maskedTextBox2.Text, int.Parse(maskedTextBox1.Text), weight, height);
+                var sex = panel6.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+                patient_bmi = new BMI(maskedTextBox2.Text,sex.ToString(), int.Parse(maskedTextBox1.Text), weight, height);
                 textBox6.Text = patient_bmi.compute_BMI().ToString();
+                bmr = patient_bmi.compute_BMR();
             }
         }
 
@@ -95,24 +100,24 @@ namespace DietApp
                 MessageBox.Show("There is not any registered patient with this id yet");
                 return;
             }
-
             try
             {
-                var diet = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-                var reason = panel3.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+                var diet = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text;
+                var reason = panel3.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text;
 
                 //lists of all panel checkboxes. Each list is sorted by the checkbox tag
-                var exclude_all = panel2.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
-                var meals_all = panel4.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
-                var special_needs_all = panel5.Controls.OfType<CheckBox>().OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
+                var exclude_all = panel2.Controls.OfType<CheckBox>().Where(r => r.Checked).OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
+                var meals_all = panel4.Controls.OfType<CheckBox>().Where(chkbox => chkbox.Checked).OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
+                var special_needs_all = panel5.Controls.OfType<CheckBox>().Where(chkbox => chkbox.Checked).OrderBy(chkbox => int.Parse(chkbox.Tag.ToString())).ToList();
 
                 //binary values seperated with "','" for seperate insertion or "," for mass insertion
-                string exclude_string = String.Join("','", returnChecked(exclude_all));
-                string meals_string = String.Join(",", returnChecked(meals_all));
-                string special_needs_string = String.Join("','", returnChecked(special_needs_all));
+                string exclude_string = String.Join(",", exclude_all.Select(chkbox => chkbox.Text));
+                string meals_string = String.Join(",", meals_all.Select(chkbox => chkbox.Text));
+                string special_needs_string = String.Join(",", special_needs_all.Select(chkbox => chkbox.Text));
 
-                DietRequirements plan = new DietRequirements(maskedTextBox2.Text, diet.Text, meals_string, reason.Text, double.Parse(maskedTextBox5.Text.Replace(",", ".")),
-                    int.Parse(maskedTextBox6.Text), int.Parse(maskedTextBox7.Text), int.Parse(maskedTextBox8.Text), exclude_string, special_needs_string);
+
+                DietRequirements plan = new DietRequirements(maskedTextBox2.Text, diet, meals_string, reason, double.Parse(maskedTextBox5.Text.Replace(",", ".")),
+                    int.Parse(maskedTextBox6.Text), int.Parse(maskedTextBox7.Text), int.Parse(maskedTextBox8.Text), exclude_string, special_needs_string,bmr);
 
                 Diet.active_user.createNewplan(plan, patient_bmi);
 
