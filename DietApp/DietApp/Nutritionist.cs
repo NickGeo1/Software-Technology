@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlTypes;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -102,6 +103,7 @@ namespace DietApp
         //Not functional yet //1//
         public void createWeeklydiet(DietRequirements program, BMI bmi, Patient patient)
         {
+            Random random= new Random();
             //1 check program,bmi object details
             double bmr = program.bmr;
             double cal_intake;
@@ -134,7 +136,7 @@ namespace DietApp
             }
             else if (program.reason_to_diet == "Weight Gain") 
             {
-                double kg_to_gain = program.desired_weight+bmi.weight;
+                double kg_to_gain = program.desired_weight - bmi.weight;
                 double weight_per_day = kg_to_gain / days;
                 cal_intake += (weight_per_day * 3500 / 0.5);
             }
@@ -146,56 +148,102 @@ namespace DietApp
             List<string> exclude_list = exclude.ToList();
 
             List<string> meals_fromDB = new List<string> ();
-            List<List<string>> result_table=DatabaseManager.returnData("select foodname,diet from food where is_snack='0'");
+            List<List<string>> result_table=DatabaseManager.returnData("select foodname,includes from food where is_snack='0'and diet='" + program.type_of_diet+"'");
             for(int i = 0; i < result_table.Count; i++)
             {
-                if (result_table[i][1] == program.type_of_diet)
-                {
-                    meals_fromDB.Add(result_table[i][0]);
-                }
-            }
-            for (int i = 0; i < meals_fromDB.Count; i++)
-            {
-                result_table = DatabaseManager.returnData("select foodname,includes from food where foodname='" + meals_fromDB[i] +"'");
-                bool flag= false;
-                int j = 0;
-                while (!flag || j<exclude_list.Count ) 
-                {
-                    flag = result_table[0][1].Contains(exclude_list[j]);
-                    if (flag)
-                    {
-                        meals_fromDB.RemoveAt(i);
-                    }
-                    j++;
-                }
-            }
-            List<string> snack_fromDB = new List<string>();
-            result_table = DatabaseManager.returnData("select foodname,diet from food where is_snack='1'");
-            for (int i = 0; i < result_table.Count; i++)
-            {
-                if (result_table[i][1] == program.type_of_diet)
-                {
-                    snack_fromDB.Add(result_table[i][0]);
-                }
-            }
-            for (int i = 0; i < snack_fromDB.Count; i++)
-            {
-                result_table = DatabaseManager.returnData("select foodname,includes from food where foodname='" + snack_fromDB[i] + "'");
                 bool flag = false;
                 int j = 0;
                 while (!flag || j < exclude_list.Count)
                 {
-                    flag = result_table[0][1].Contains(exclude_list[j]);
-                    if (flag)
-                    {
-                        snack_fromDB.RemoveAt(i);
-                    }
+                    flag = result_table[i][1].Contains(exclude_list[j]);
                     j++;
+                }
+                if (!flag)
+                {
+                    meals_fromDB.Add(result_table[i][0]);
+                }
+            }
+            
+            //and appropriate snacks
+            List<string> snack_fromDB = new List<string>();
+            result_table = DatabaseManager.returnData("select foodname,includes from food where is_snack='1'and diet='" + program.type_of_diet + "'");
+            for (int i = 0; i < result_table.Count; i++)
+            {
+                bool flag = false;
+                int j = 0;
+                while (!flag || j < exclude_list.Count)
+                {
+                    flag = result_table[i][1].Contains(exclude_list[j]);
+                    j++;
+                }
+                if (!flag)
+                {
+                    snack_fromDB.Add(result_table[i][0]);
                 }
             }
 
             //3 create 7 DailyProgram Objects from the foods
-            //4 store the 7 DailyProgram Objects in a weekly_diet List and store it to patient object: patient.weekly_diet = weekly_diet
+            List<string> week_days= new List<string>() {"Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday" };
+            string day;
+            string breakfast="";
+            string lunch = "";
+            string snack = "";
+            string dinner = "";
+            double estimated_intake = 0;
+            int rnd;
+            if (!program.meal_string.Contains("Breakfast")) { breakfast = "-"; }
+            if (!program.meal_string.Contains("Lunch")) { lunch = "-"; }
+            if (!program.meal_string.Contains("Snack")) { snack = "-"; }
+            if (!program.meal_string.Contains("Dinner")) { dinner = "-"; }
+
+            List<List<string>> breakfast_table= new List<List<string>>();
+            List<List<string>> lunch_table= new List<List<string>>();
+            List<List<string>> dinner_table= new List<List<string>>();
+            List < List<string>> snack_table= new List<List<string>>();
+            List<DailyProgram> weekly_diet= new List<DailyProgram>();
+
+            for (int i = 0; i <= 6; i++)
+            {
+                bool flag = false;
+                while (!flag)
+                {
+                    if (!(breakfast == "-"))
+                    {
+                        rnd = random.Next(0, meals_fromDB.Count);
+                        breakfast_table = DatabaseManager.returnData("select foodname,kcal from food where foodname='" + meals_fromDB[rnd] + "'");
+                        estimated_intake += int.Parse(breakfast_table[0][1]);
+                        breakfast = breakfast_table[0][0];
+                    }
+                    if (!(lunch == "-")) {
+                        rnd = random.Next(0, meals_fromDB.Count);
+                        lunch_table = DatabaseManager.returnData("select foodname,kcal from food where foodname='" + meals_fromDB[rnd] + "'");
+                        estimated_intake += int.Parse(lunch_table[0][1]);
+                        lunch = lunch_table[0][0];
+                    }
+                    if (!(dinner == "-")) {
+                        rnd = random.Next(0, meals_fromDB.Count);
+                        dinner_table = DatabaseManager.returnData("select foodname,kcal from food where foodname='" + meals_fromDB[rnd] + "'"); 
+                        estimated_intake += int.Parse(dinner_table[0][1]);
+                        dinner = dinner_table[0][0];
+                    }
+                    if (!(snack == "-")) {
+                        rnd = random.Next(0, snack_fromDB.Count);
+                        snack_table = DatabaseManager.returnData("select foodname,kcal from food where foodname='" + snack_fromDB[rnd] + "'");
+                        estimated_intake += int.Parse(snack_table[0][1]);
+                        lunch = lunch_table[0][0];
+                    }
+                    if (Math.Abs(estimated_intake - cal_intake) <= 100)
+                    {
+                        flag = true;  
+                    }
+                    //4 store the 7 DailyProgram Objects in a weekly_diet List and store it to patient object: patient.weekly_diet = weekly_diet
+                    DailyProgram new_program = new DailyProgram(week_days[i], breakfast, lunch, snack, dinner, program.patient_id, (program.patient_id +","+ week_days[i]));
+                }
+            }
+
+
+
+            
             //5 store the appropriate foods in database table (eating)
 
         }
