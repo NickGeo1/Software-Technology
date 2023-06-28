@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using DietApp.Properties;
 namespace DietApp
 {
     public class Users
@@ -54,7 +54,6 @@ namespace DietApp
             }
         }
 
-        //Not functional yet //3//
         public static void viewPlan(string patient_id)
         {
             Patient patient = null;
@@ -80,19 +79,27 @@ namespace DietApp
                     MessageBox.Show("Patient with id " + patient_id + " not found");
                     return;
                 }
-                   
+
             }
 
-            if(patient.weekly_diet.Count == 0)
+            if (patient.weekly_diet.Count == 0)
             {
                 MessageBox.Show("Patient with id " + patient_id + " does not have weekly diet yet");
                 return;
             }
+            else
+            {
+                //2 Iterate weekly_diet list and use all the 7 DailyProgram objects to print the plan
+                Form3.Monday = patient.weekly_diet[0];
+                Form3.Tuesday = patient.weekly_diet[1];
+                Form3.Wednesday = patient.weekly_diet[2];
+                Form3.Thursday = patient.weekly_diet[3];
+                Form3.Friday = patient.weekly_diet[4];
+                Form3.Saturday = patient.weekly_diet[5];
+                Form3.Sunday = patient.weekly_diet[6];
+                
 
-            //1 After Patient object creation, weekly_diet list should be ready
-            //2 Iterate weekly_diet list and use all the 7 DailyProgram objects to print the plan
-
+            }
         }
-
     }
 }

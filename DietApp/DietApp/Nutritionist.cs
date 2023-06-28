@@ -141,7 +141,7 @@ namespace DietApp
                 cal_intake += (weight_per_day * 3500 / 0.5);
             }
 
-            //2 search database table (food) for appropriate foods
+            //2 search database table (food) for appropriate food
             string[] exclude = program.exclude_string.Split(',');
             string[] meals=program.meal_string.Split(',');
             List<string> meals_list = meals.ToList();
@@ -184,68 +184,84 @@ namespace DietApp
 
             //3 create 7 DailyProgram Objects from the foods
             List<string> week_days= new List<string>() {"Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday" };
-            string day;
-            string breakfast="";
-            string lunch = "";
-            string snack = "";
-            string dinner = "";
+            string breakfast_name="";
+            string lunch_name = "";
+            string snack_name = "";
+            string dinner_name = "";
             double estimated_intake = 0;
             int rnd;
-            if (!program.meal_string.Contains("Breakfast")) { breakfast = "-"; }
-            if (!program.meal_string.Contains("Lunch")) { lunch = "-"; }
-            if (!program.meal_string.Contains("Snack")) { snack = "-"; }
-            if (!program.meal_string.Contains("Dinner")) { dinner = "-"; }
+            if (!program.meal_string.Contains("Breakfast")) { breakfast_name = "-"; }
+            if (!program.meal_string.Contains("Lunch")) { lunch_name = "-"; }
+            if (!program.meal_string.Contains("Snack")) { snack_name = "-"; }
+            if (!program.meal_string.Contains("Dinner")) { dinner_name = "-"; }
 
             List<List<string>> breakfast_table= new List<List<string>>();
             List<List<string>> lunch_table= new List<List<string>>();
             List<List<string>> dinner_table= new List<List<string>>();
             List < List<string>> snack_table= new List<List<string>>();
-            List<DailyProgram> weekly_diet= new List<DailyProgram>();
-
             for (int i = 0; i <= 6; i++)
             {
                 bool flag = false;
                 while (!flag)
                 {
-                    if (!(breakfast == "-"))
+                    if (!(breakfast_name.Equals("-")))
                     {
                         rnd = random.Next(0, meals_fromDB.Count);
-                        breakfast_table = DatabaseManager.returnData("select foodname,kcal from food where foodname='" + meals_fromDB[rnd] + "'");
+                        breakfast_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + meals_fromDB[rnd] + "'");
                         estimated_intake += int.Parse(breakfast_table[0][1]);
-                        breakfast = breakfast_table[0][0];
+                        breakfast_name = breakfast_table[0][0];
                     }
-                    if (!(lunch == "-")) {
+                    if (!(lunch_name.Equals("-"))) {
                         rnd = random.Next(0, meals_fromDB.Count);
                         lunch_table = DatabaseManager.returnData("select foodname,kcal from food where foodname='" + meals_fromDB[rnd] + "'");
                         estimated_intake += int.Parse(lunch_table[0][1]);
-                        lunch = lunch_table[0][0];
+                        lunch_name = lunch_table[0][0];
                     }
-                    if (!(dinner == "-")) {
+                    if (!(dinner_name.Equals("-"))) {
                         rnd = random.Next(0, meals_fromDB.Count);
                         dinner_table = DatabaseManager.returnData("select foodname,kcal from food where foodname='" + meals_fromDB[rnd] + "'"); 
                         estimated_intake += int.Parse(dinner_table[0][1]);
-                        dinner = dinner_table[0][0];
-                    }
-                    if (!(snack == "-")) {
+                        dinner_name = dinner_table[0][0];
+                    }   
+                    if (!(snack_name.Equals("-"))) {
                         rnd = random.Next(0, snack_fromDB.Count);
                         snack_table = DatabaseManager.returnData("select foodname,kcal from food where foodname='" + snack_fromDB[rnd] + "'");
                         estimated_intake += int.Parse(snack_table[0][1]);
-                        lunch = lunch_table[0][0];
+                        lunch_name = lunch_table[0][0];
                     }
                     if (Math.Abs(estimated_intake - cal_intake) <= 100)
                     {
                         flag = true;  
                     }
-                    //4 store the 7 DailyProgram Objects in a weekly_diet List and store it to patient object: patient.weekly_diet = weekly_diet
-                    DailyProgram new_program = new DailyProgram(week_days[i], breakfast, lunch, snack, dinner, program.patient_id, (program.patient_id +","+ week_days[i]));
                 }
+                Food breakfast= null;
+                Food lunch = null;
+                Food dinner = null;
+                Food snack = null;
+
+                if (!(breakfast_name.Equals("-"))) { 
+                    breakfast = new Food(breakfast_name, double.Parse(breakfast_table[0][1]), double.Parse(breakfast_table[0][2]), double.Parse(breakfast_table[0][3]), double.Parse(breakfast_table[0][4]), 0, program.type_of_diet,breakfast_table[0][5].Split(',').ToList());
+                }
+                if (!(lunch_name.Equals("-")))
+                {
+                    lunch = new Food(lunch_name, double.Parse(lunch_table[0][1]), double.Parse(lunch_table[0][2]), double.Parse(lunch_table[0][3]), double.Parse(lunch_table[0][4]), 0, program.type_of_diet, lunch_table[0][5].Split(',').ToList());
+                }
+                if (!(dinner_name.Equals("-")))
+                {
+                    dinner = new Food(dinner_name, double.Parse(dinner_table[0][1]), double.Parse(dinner_table[0][2]), double.Parse(dinner_table[0][3]), double.Parse(dinner_table[0][4]), 0, program.type_of_diet, dinner_table[0][5].Split(',').ToList());
+                }
+                if (!(snack_name.Equals("-")))
+                {
+                    snack = new Food(snack_name, double.Parse(snack_table[0][1]), double.Parse(snack_table[0][2]), double.Parse(snack_table[0][3]), double.Parse(snack_table[0][4]), 0, program.type_of_diet, snack_table[0][5].Split(',').ToList());
+                }
+                //4 store the 7 DailyProgram Objects in a weekly_diet List and store it to patient object: patient.weekly_diet = weekly_diet
+                DailyProgram new_program = new DailyProgram(week_days[i], breakfast, lunch, snack, dinner, program.patient_id, (program.patient_id +","+ week_days[i]));
+                string ConcatenatedString = string.Join(",", new_program.patient_id.ToString(),new_program.day);
+                //5 store the appropriate foods in database table (eating)
+                DatabaseManager.updateData("insert into eating(day, breakfast, lunch, snack, dinner, patient_id, id_and_day) values('" + new_program.day + "','" + new_program.breakfast + "','" + new_program.lunch + "','" + new_program.snack + "','" + new_program.dinner + "','" + new_program.patient_id + "','" + ConcatenatedString + "')");
             }
 
-
-
             
-            //5 store the appropriate foods in database table (eating)
-
         }
     }
 }

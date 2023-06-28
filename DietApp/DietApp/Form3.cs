@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -9,11 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace DietApp
 {
     public partial class Form3 : Form
-    {   
+    {
+        // Assuming you have an instance of Form3 available or can create a new instance
+        public static DailyProgram Monday = null;
+        public static DailyProgram Tuesday = null;
+        public static DailyProgram Wednesday = null;
+        public static DailyProgram Thursday = null;
+        public static DailyProgram Friday = null;
+        public static DailyProgram Saturday = null;
+        public static DailyProgram Sunday = null;
         bool flag = true;
 
         public Form3()
@@ -66,4 +74,5 @@ namespace DietApp
             form1.Show();
         }
     }
+    
 }
