@@ -144,7 +144,6 @@ namespace DietApp
             //2 search database table (food) for appropriate food
             string[] exclude = program.exclude_string.Split(',');
             string[] meals=program.meal_string.Split(',');
-            List<string> meals_list = meals.ToList();
             List<string> exclude_list = exclude.ToList();
 
             List<string> meals_fromDB = new List<string> ();
@@ -199,6 +198,9 @@ namespace DietApp
             List<List<string>> lunch_table= new List<List<string>>();
             List<List<string>> dinner_table= new List<List<string>>();
             List < List<string>> snack_table= new List<List<string>>();
+
+            List<DailyProgram> weekly_diet = new List<DailyProgram>();
+
             for (int i = 0; i <= 6; i++)
             {
                 bool flag = false;
@@ -213,19 +215,19 @@ namespace DietApp
                     }
                     if (!(lunch_name.Equals("-"))) {
                         rnd = random.Next(0, meals_fromDB.Count);
-                        lunch_table = DatabaseManager.returnData("select foodname,kcal from food where foodname='" + meals_fromDB[rnd] + "'");
+                        lunch_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + meals_fromDB[rnd] + "'");
                         estimated_intake += int.Parse(lunch_table[0][1]);
                         lunch_name = lunch_table[0][0];
                     }
                     if (!(dinner_name.Equals("-"))) {
                         rnd = random.Next(0, meals_fromDB.Count);
-                        dinner_table = DatabaseManager.returnData("select foodname,kcal from food where foodname='" + meals_fromDB[rnd] + "'"); 
+                        dinner_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + meals_fromDB[rnd] + "'"); 
                         estimated_intake += int.Parse(dinner_table[0][1]);
                         dinner_name = dinner_table[0][0];
                     }   
                     if (!(snack_name.Equals("-"))) {
                         rnd = random.Next(0, snack_fromDB.Count);
-                        snack_table = DatabaseManager.returnData("select foodname,kcal from food where foodname='" + snack_fromDB[rnd] + "'");
+                        snack_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + snack_fromDB[rnd] + "'");
                         estimated_intake += int.Parse(snack_table[0][1]);
                         lunch_name = lunch_table[0][0];
                     }
@@ -255,13 +257,14 @@ namespace DietApp
                     snack = new Food(snack_name, double.Parse(snack_table[0][1]), double.Parse(snack_table[0][2]), double.Parse(snack_table[0][3]), double.Parse(snack_table[0][4]), 0, program.type_of_diet, snack_table[0][5].Split(',').ToList());
                 }
                 //4 store the 7 DailyProgram Objects in a weekly_diet List and store it to patient object: patient.weekly_diet = weekly_diet
-                DailyProgram new_program = new DailyProgram(week_days[i], breakfast, lunch, snack, dinner, program.patient_id, (program.patient_id +","+ week_days[i]));
+                DailyProgram new_program = new DailyProgram(week_days[i], breakfast, lunch, snack, dinner, program.patient_id);
+                weekly_diet.Add(new_program);
                 string ConcatenatedString = string.Join(",", new_program.patient_id.ToString(),new_program.day);
                 //5 store the appropriate foods in database table (eating)
                 DatabaseManager.updateData("insert into eating(day, breakfast, lunch, snack, dinner, patient_id, id_and_day) values('" + new_program.day + "','" + new_program.breakfast + "','" + new_program.lunch + "','" + new_program.snack + "','" + new_program.dinner + "','" + new_program.patient_id + "','" + ConcatenatedString + "')");
             }
 
-            
+            patient.weekly_diet = weekly_diet;
         }
     }
 }

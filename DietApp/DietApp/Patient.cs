@@ -53,7 +53,7 @@ namespace DietApp
                         temp[j - 1] = food;
                     }
                     //3 store the DailyProgram objects in weekly_diet list
-                    weekly_program[i] = new DailyProgram(result_table[0][0], temp[0], temp[1], temp[2], temp[3], result_table[5][0], result_table[6][0]);
+                    weekly_program[i] = new DailyProgram(result_table[0][0], temp[0], temp[1], temp[2], temp[3], result_table[5][0]);
                 }
             }
             return weekly_program;
