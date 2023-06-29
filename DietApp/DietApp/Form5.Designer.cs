@@ -1084,7 +1084,7 @@
             this.label13.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(1268, 673);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(70, 16);
+            this.label13.Size = new System.Drawing.Size(69, 16);
             this.label13.TabIndex = 57;
             this.label13.Text = "Register";
             // 
@@ -1293,7 +1293,7 @@
             this.label16.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(1204, 673);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(44, 16);
+            this.label16.Size = new System.Drawing.Size(43, 16);
             this.label16.TabIndex = 62;
             this.label16.Text = "Menu";
             // 
@@ -1320,6 +1320,7 @@
             this.maskedTextBox1.Location = new System.Drawing.Point(74, 63);
             this.maskedTextBox1.Mask = "00";
             this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.PromptChar = '0';
             this.maskedTextBox1.ResetOnPrompt = false;
             this.maskedTextBox1.ResetOnSpace = false;
             this.maskedTextBox1.Size = new System.Drawing.Size(44, 29);
@@ -1335,6 +1336,7 @@
             this.maskedTextBox3.Location = new System.Drawing.Point(227, 63);
             this.maskedTextBox3.Mask = "000.00";
             this.maskedTextBox3.Name = "maskedTextBox3";
+            this.maskedTextBox3.PromptChar = '0';
             this.maskedTextBox3.Size = new System.Drawing.Size(72, 29);
             this.maskedTextBox3.TabIndex = 65;
             this.maskedTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1350,6 +1352,7 @@
             this.maskedTextBox4.Location = new System.Drawing.Point(411, 64);
             this.maskedTextBox4.Mask = "000";
             this.maskedTextBox4.Name = "maskedTextBox4";
+            this.maskedTextBox4.PromptChar = '0';
             this.maskedTextBox4.ResetOnPrompt = false;
             this.maskedTextBox4.ResetOnSpace = false;
             this.maskedTextBox4.Size = new System.Drawing.Size(44, 29);
@@ -1368,6 +1371,7 @@
             this.maskedTextBox5.Location = new System.Drawing.Point(798, 644);
             this.maskedTextBox5.Mask = "000.00";
             this.maskedTextBox5.Name = "maskedTextBox5";
+            this.maskedTextBox5.PromptChar = '0';
             this.maskedTextBox5.ResetOnPrompt = false;
             this.maskedTextBox5.ResetOnSpace = false;
             this.maskedTextBox5.Size = new System.Drawing.Size(78, 29);
@@ -1385,6 +1389,7 @@
             this.maskedTextBox6.Location = new System.Drawing.Point(1083, 644);
             this.maskedTextBox6.Mask = "00";
             this.maskedTextBox6.Name = "maskedTextBox6";
+            this.maskedTextBox6.PromptChar = '0';
             this.maskedTextBox6.ResetOnPrompt = false;
             this.maskedTextBox6.ResetOnSpace = false;
             this.maskedTextBox6.Size = new System.Drawing.Size(44, 29);
@@ -1402,6 +1407,7 @@
             this.maskedTextBox7.Location = new System.Drawing.Point(969, 345);
             this.maskedTextBox7.Mask = "00";
             this.maskedTextBox7.Name = "maskedTextBox7";
+            this.maskedTextBox7.PromptChar = '0';
             this.maskedTextBox7.ResetOnPrompt = false;
             this.maskedTextBox7.ResetOnSpace = false;
             this.maskedTextBox7.Size = new System.Drawing.Size(44, 29);
@@ -1420,6 +1426,7 @@
             this.maskedTextBox8.Location = new System.Drawing.Point(969, 386);
             this.maskedTextBox8.Mask = "00";
             this.maskedTextBox8.Name = "maskedTextBox8";
+            this.maskedTextBox8.PromptChar = '0';
             this.maskedTextBox8.ResetOnPrompt = false;
             this.maskedTextBox8.ResetOnSpace = false;
             this.maskedTextBox8.Size = new System.Drawing.Size(44, 29);

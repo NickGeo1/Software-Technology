@@ -57,8 +57,8 @@ namespace DietApp
         {
             flag = false;
             this.Close();
-            Form2 form2 = new Form2();
-            form2.Show();
+            Form1 form1 = new Form1();
+            form1.Show();
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)

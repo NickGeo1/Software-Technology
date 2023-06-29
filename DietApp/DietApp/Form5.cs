@@ -52,11 +52,12 @@ namespace DietApp
 
         private void maskedTextBox3_TextChanged(object sender, EventArgs e)
         {
-            if (maskedTextBox3.MaskFull && maskedTextBox4.MaskFull)
+            if (!maskedTextBox3.Text.Equals("000.00") && !maskedTextBox4.Text.Equals("000"))
             {
                 weight = Double.Parse(maskedTextBox3.Text);
                 height = Int32.Parse(maskedTextBox4.Text);
-                var sex = panel6.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+                var selected_but = panel6.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+                var sex = selected_but.Text;
                 patient_bmi = new BMI(maskedTextBox2.Text, sex.ToString(), int.Parse(maskedTextBox1.Text), weight, height);
                 textBox6.Text = patient_bmi.compute_BMI().ToString();
                 bmr=patient_bmi.compute_BMR();
@@ -65,11 +66,12 @@ namespace DietApp
 
         private void maskedTextBox4_TextChanged(object sender, EventArgs e)
         {
-            if (maskedTextBox3.MaskFull && maskedTextBox4.MaskFull)
+            if (!maskedTextBox3.Text.Equals("000.00") && !maskedTextBox4.Text.Equals("000"))
             {
                 weight = Double.Parse(maskedTextBox3.Text);
                 height = Int32.Parse(maskedTextBox4.Text);
-                var sex = panel6.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+                var selected_but = panel6.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+                var sex = selected_but.Text;
                 patient_bmi = new BMI(maskedTextBox2.Text, sex.ToString(), int.Parse(maskedTextBox1.Text), weight, height);
                 textBox6.Text = patient_bmi.compute_BMI().ToString();
                 bmr = patient_bmi.compute_BMR();
@@ -100,7 +102,7 @@ namespace DietApp
                 MessageBox.Show("There is not any registered patient with this id yet");
                 return;
             }
-            try
+            //try
             {
                 var diet = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text;
                 var reason = panel3.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text;
@@ -138,9 +140,9 @@ namespace DietApp
                 this.Close();
                 new Form2().Show(); //go back to main menu
             }
-            catch(Exception ex)
+           // catch(Exception ex)
             {
-                MessageBox.Show("Something went wrong during plan making, please check your data and try again\n" + ex.Message);
+              //  MessageBox.Show("Something went wrong during plan making, please check your data and try again\n" + ex.Message);
             }
 
         }

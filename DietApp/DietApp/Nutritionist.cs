@@ -52,28 +52,40 @@ namespace DietApp
 
         public void createNewplan(DietRequirements plan, BMI bmi, string boolean_special_needs, string boolean_exclude)
         {
-            //binary version of 
+            List<List<string>> list = DatabaseManager.returnData("select patient_id from program where patient_id='" + plan.patient_id + "'");
+            if (list == null)
+            {
+                //program data
+                DatabaseManager.updateData("insert into program(patient_id,type_of_diet,meals,reason_to_diet,desired_weight,weeks_of_dieting,hours_of_sleep,hours_of_excersise,sex) " +
+                "values('" + plan.patient_id + "','" + plan.type_of_diet +"','" + plan.meal_string +"','" + plan.reason_to_diet + "','" + plan.desired_weight + "','" + plan.weeks_of_dieting +"','" + plan.hours_of_sleep + "','" + plan.hours_of_excersise + "','" + bmi.patient_sex + "')");
 
-            //program data
-            DatabaseManager.updateData("insert into program(patient_id,type_of_diet," +
-            "meals," +
-            "reason_to_diet,desired_weight,weeks_of_dieting," +
-            "hours_of_sleep,hours_of_excersise) " +
-            "values('" + plan.patient_id + "','" + plan.type_of_diet +
-            "','" + plan.meal_string +
-            "','" + plan.reason_to_diet + "','" + plan.desired_weight + "','" + plan.weeks_of_dieting +
-            "','" + plan.hours_of_sleep + "','" + plan.hours_of_excersise + "')");
+                //bmi data
+                DatabaseManager.updateData("insert into bmi(patient_id, bmi_of_patient, age, weight, height) values " +
+                "('" + bmi.patient_id + "','" + bmi.compute_BMI() + "','" + bmi.age + "','" + bmi.weight.ToString().Replace(",", ".") + "','" + bmi.height + "')");
 
-            //bmi data
-            DatabaseManager.updateData("insert into bmi(patient_id, bmi_of_patient, age, weight, height) values " +
-                "('" + bmi.patient_id + "','" + bmi.compute_BMI() + "','" + bmi.age + "','" + bmi.weight.ToString().Replace(",",".") + "','" + bmi.height + "')");
+                //special needs data
+                DatabaseManager.updateData("insert into special_needs values('" + plan.patient_id + "','" + boolean_special_needs + "')");
 
-            //special needs data
-            DatabaseManager.updateData("insert into special_needs values('" + plan.patient_id + "','" + boolean_special_needs + "')");
+                //excluding data
+                DatabaseManager.updateData("insert into excluding values('" + plan.patient_id + "','" + boolean_exclude + "')");
+            }
+            else
+            {
+                // program data update
+                DatabaseManager.updateData("UPDATE program SET type_of_diet = '" + plan.type_of_diet + "', meals = '" + plan.meal_string + "', reason_to_diet = '" + plan.reason_to_diet + "', desired_weight = '" + plan.desired_weight + "', weeks_of_dieting = '" + plan.weeks_of_dieting + "', hours_of_sleep = '" + plan.hours_of_sleep + "', hours_of_excersise = '" + plan.hours_of_excersise + "', sex = '" + bmi.patient_sex + "' WHERE patient_id = '" + plan.patient_id + "'");
 
-            //excluding data
-            DatabaseManager.updateData("insert into excluding values('" + plan.patient_id + "','" + boolean_exclude + "')");
+                // bmi data update
+                DatabaseManager.updateData("UPDATE bmi SET bmi_of_patient = '" + bmi.compute_BMI() + "', age = '" + bmi.age + "', weight = '" + bmi.weight.ToString().Replace(",", ".") + "', height = '" + bmi.height + "' WHERE patient_id = '" + bmi.patient_id + "'");
 
+                // special needs data update
+                List<string> string_list= boolean_special_needs.Split(',').ToList();
+                DatabaseManager.updateData("UPDATE special_needs SET cancer = '" + int.Parse(string_list[0]) + "', diabetes = '" + int.Parse(string_list[1]) + "', hyperthyroidism = '" + int.Parse(string_list[2]) + "', hypothyroidism = '" + int.Parse(string_list[3]) + "', high_blood_cholesterol = '" + int.Parse(string_list[4]) + "', high_blood_sugar = '" + int.Parse(string_list[5]) + "', pregnancy = '" + int.Parse(string_list[6]) + "', breastfeeding = '" + int.Parse(string_list[7]) + "', cardiovascular_diseases = '" + int.Parse(string_list[8]) + "', osteoporosis = '" + int.Parse(string_list[9]) + "' WHERE patient_id = '" + plan.patient_id + "'");
+
+                // excluding data update
+                string_list = boolean_exclude.Split(',').ToList();
+                DatabaseManager.updateData("UPDATE excluding SET fish = '" + int.Parse(string_list[0]) + "', diary = '" + int.Parse(string_list[1]) + "', wheat = '" + int.Parse(string_list[2]) + "', egg = '" + int.Parse(string_list[3]) + "', tree_nuts = '" + int.Parse(string_list[4]) + "', peanuts = '" + int.Parse(string_list[5]) + "', crustacean_shellfish = '" + int.Parse(string_list[6]) + "', soybeans = '" + int.Parse(string_list[7]) + "', sesame = '" + int.Parse(string_list[8]) + "', mushrooms = '" + int.Parse(string_list[9]) + "' WHERE patient_id = '" + plan.patient_id + "'");
+
+            }
         }
 
         public void searchPatient(Label full_name, Label ssn, Label id, Panel datapanel, string patient_ssn)
@@ -152,7 +164,7 @@ namespace DietApp
             {
                 bool flag = false;
                 int j = 0;
-                while (!flag || j < exclude_list.Count)
+                while (!flag || j < exclude_list.Count-1)
                 {
                     flag = result_table[i][1].Contains(exclude_list[j]);
                     j++;
@@ -170,7 +182,7 @@ namespace DietApp
             {
                 bool flag = false;
                 int j = 0;
-                while (!flag || j < exclude_list.Count)
+                while (!flag || j < exclude_list.Count-1)
                 {
                     flag = result_table[i][1].Contains(exclude_list[j]);
                     j++;
@@ -209,25 +221,25 @@ namespace DietApp
                     if (!(breakfast_name.Equals("-")))
                     {
                         rnd = random.Next(0, meals_fromDB.Count);
-                        breakfast_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + meals_fromDB[rnd] + "'");
+                        breakfast_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + meals_fromDB[rnd] + "'");
                         estimated_intake += int.Parse(breakfast_table[0][1]);
                         breakfast_name = breakfast_table[0][0];
                     }
                     if (!(lunch_name.Equals("-"))) {
                         rnd = random.Next(0, meals_fromDB.Count);
-                        lunch_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + meals_fromDB[rnd] + "'");
+                        lunch_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + meals_fromDB[rnd] + "'");
                         estimated_intake += int.Parse(lunch_table[0][1]);
                         lunch_name = lunch_table[0][0];
                     }
                     if (!(dinner_name.Equals("-"))) {
                         rnd = random.Next(0, meals_fromDB.Count);
-                        dinner_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + meals_fromDB[rnd] + "'"); 
+                        dinner_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + meals_fromDB[rnd] + "'"); 
                         estimated_intake += int.Parse(dinner_table[0][1]);
                         dinner_name = dinner_table[0][0];
                     }   
                     if (!(snack_name.Equals("-"))) {
                         rnd = random.Next(0, snack_fromDB.Count);
-                        snack_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + snack_fromDB[rnd] + "'");
+                        snack_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + snack_fromDB[rnd] + "'");
                         estimated_intake += int.Parse(snack_table[0][1]);
                         lunch_name = lunch_table[0][0];
                     }
@@ -261,7 +273,15 @@ namespace DietApp
                 weekly_diet.Add(new_program);
                 string ConcatenatedString = string.Join(",", new_program.patient_id.ToString(),new_program.day);
                 //5 store the appropriate foods in database table (eating)
-                DatabaseManager.updateData("insert into eating(day, breakfast, lunch, snack, dinner, patient_id, id_and_day) values('" + new_program.day + "','" + new_program.breakfast + "','" + new_program.lunch + "','" + new_program.snack + "','" + new_program.dinner + "','" + new_program.patient_id + "','" + ConcatenatedString + "')");
+                List<List<string>> list = DatabaseManager.returnData("select id_and_day from eating where patient_id='" + new_program.patient_id + "'");
+                if (list == null)
+                {
+                    DatabaseManager.updateData("insert into eating(day, breakfast, lunch, snack, dinner, patient_id, id_and_day) values('" + new_program.day + "','" + new_program.breakfast + "','" + new_program.lunch + "','" + new_program.snack + "','" + new_program.dinner + "','" + new_program.patient_id + "','" + ConcatenatedString + "')");
+                }
+                else
+                {
+                    DatabaseManager.updateData("UPDATE eating SET breakfast = '" + new_program.breakfast + "', lunch = '" + new_program.lunch + "', snack = '" + new_program.snack + "', dinner = '" + new_program.dinner + "'WHERE day = '" + new_program.day + "' AND patient_id = '" + new_program.patient_id + "'");
+                }
             }
 
             patient.weekly_diet = weekly_diet;

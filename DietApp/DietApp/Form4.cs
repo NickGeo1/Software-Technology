@@ -41,7 +41,7 @@ namespace DietApp
                     Diet.active_user.registerNewpatient(patient);
 
                     MessageBox.Show("Patient " + textBox4.Text + " successfuly registered!");
-                    MessageBox.Show("Lets create now his diet plan!");
+                    MessageBox.Show("Let's create now their diet plan!");
 
                     flag = false;
                     new Form5(patient).Show(); //pass patient on form5
@@ -52,9 +52,9 @@ namespace DietApp
 
                 }
             }
-            catch(Exception exc)
+           catch(Exception exc)
             {
-                MessageBox.Show("Something went wrong during user registration. Please check the data and try again\n"+ exc.Message);
+               // MessageBox.Show("Something went wrong during user registration. Please check the data and try again\n"+ exc.Message);
             }                   
         }
 
