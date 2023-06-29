@@ -1,25 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
 using System.Data;
-using System.Drawing;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 
 namespace DietApp
 {
     public partial class Form5 : Form
     {
-        List<string> PANEL2 = new List<string>(){};
+        List<string> PANEL2 = new List<string>() { };
         double weight = 0;
         double height = 0;
         bool flag = true;
-        double bmr= 0;
+        double bmr = 0;
 
         private BMI patient_bmi;
         private Patient patient;
@@ -36,7 +31,7 @@ namespace DietApp
 
         private void Form5_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (flag==true)
+            if (flag == true)
             {
                 Application.Exit();
             }
@@ -54,13 +49,14 @@ namespace DietApp
         {
             if (!maskedTextBox3.Text.Equals("000.00") && !maskedTextBox4.Text.Equals("000"))
             {
-                weight = Double.Parse(maskedTextBox3.Text);
+                string weight_st=maskedTextBox3.Text;
+                weight = Double.Parse(weight_st);
                 height = Int32.Parse(maskedTextBox4.Text);
                 var selected_but = panel6.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
                 var sex = selected_but.Text;
                 patient_bmi = new BMI(maskedTextBox2.Text, sex.ToString(), int.Parse(maskedTextBox1.Text), weight, height);
                 textBox6.Text = patient_bmi.compute_BMI().ToString();
-                bmr=patient_bmi.compute_BMR();
+                bmr = patient_bmi.compute_BMR();
             }
         }
 
@@ -68,7 +64,8 @@ namespace DietApp
         {
             if (!maskedTextBox3.Text.Equals("000.00") && !maskedTextBox4.Text.Equals("000"))
             {
-                weight = Double.Parse(maskedTextBox3.Text);
+                string weight_st = maskedTextBox3.Text;
+                weight = Double.Parse(weight_st);
                 height = Int32.Parse(maskedTextBox4.Text);
                 var selected_but = panel6.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
                 var sex = selected_but.Text;
@@ -133,16 +130,16 @@ namespace DietApp
 
                 //Not functional yet
                 Diet.active_user.createWeeklydiet(plan, patient_bmi, patient);
-
+                
                 MessageBox.Show("Successfuly created patient program!");
 
                 flag = false;
                 this.Close();
                 new Form2().Show(); //go back to main menu
             }
-           // catch(Exception ex)
+            // catch(Exception ex)
             {
-              //  MessageBox.Show("Something went wrong during plan making, please check your data and try again\n" + ex.Message);
+                //  MessageBox.Show("Something went wrong during plan making, please check your data and try again\n" + ex.Message);
             }
 
         }

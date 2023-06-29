@@ -78,12 +78,14 @@ namespace DietApp
                 DatabaseManager.updateData("UPDATE bmi SET bmi_of_patient = '" + bmi.compute_BMI() + "', age = '" + bmi.age + "', weight = '" + bmi.weight.ToString().Replace(",", ".") + "', height = '" + bmi.height + "' WHERE patient_id = '" + bmi.patient_id + "'");
 
                 // special needs data update
-                List<string> string_list= boolean_special_needs.Split(',').ToList();
-                DatabaseManager.updateData("UPDATE special_needs SET cancer = '" + int.Parse(string_list[0]) + "', diabetes = '" + int.Parse(string_list[1]) + "', hyperthyroidism = '" + int.Parse(string_list[2]) + "', hypothyroidism = '" + int.Parse(string_list[3]) + "', high_blood_cholesterol = '" + int.Parse(string_list[4]) + "', high_blood_sugar = '" + int.Parse(string_list[5]) + "', pregnancy = '" + int.Parse(string_list[6]) + "', breastfeeding = '" + int.Parse(string_list[7]) + "', cardiovascular_diseases = '" + int.Parse(string_list[8]) + "', osteoporosis = '" + int.Parse(string_list[9]) + "' WHERE patient_id = '" + plan.patient_id + "'");
+                string clean_input = boolean_special_needs.Replace("'", "");
+                List<int> string_list = clean_input.Split(',').Select(element => int.Parse(element)).ToList();
+                DatabaseManager.updateData("UPDATE special_needs SET cancer = '" + string_list[0] + "', diabetes = '" + string_list[1] + "', hyperthyroidism = '" + string_list[2] + "', hypothyroidism = '" + string_list[3] + "', high_blood_cholesterol = '" + string_list[4] + "', high_blood_sugar = '" + string_list[5] + "', pregnancy = '" + string_list[6] + "', breast_feeding = '" + string_list[7] + "', cardiovascular_diseases = '" + string_list[8] + "', osteoporosis = '" + string_list[9] + "' WHERE patient_id = '" + plan.patient_id + "'");
 
                 // excluding data update
-                string_list = boolean_exclude.Split(',').ToList();
-                DatabaseManager.updateData("UPDATE excluding SET fish = '" + int.Parse(string_list[0]) + "', diary = '" + int.Parse(string_list[1]) + "', wheat = '" + int.Parse(string_list[2]) + "', egg = '" + int.Parse(string_list[3]) + "', tree_nuts = '" + int.Parse(string_list[4]) + "', peanuts = '" + int.Parse(string_list[5]) + "', crustacean_shellfish = '" + int.Parse(string_list[6]) + "', soybeans = '" + int.Parse(string_list[7]) + "', sesame = '" + int.Parse(string_list[8]) + "', mushrooms = '" + int.Parse(string_list[9]) + "' WHERE patient_id = '" + plan.patient_id + "'");
+                clean_input = boolean_exclude.Replace("'", "");
+                string_list = clean_input.Split(',').Select(element => int.Parse(element)).ToList();
+                DatabaseManager.updateData("UPDATE excluding SET fish = '" + string_list[0] + "', diary = '" + string_list[1] + "', wheat = '" + string_list[2] + "', egg = '" + string_list[3] + "', tree_nuts = '" + string_list[4] + "', peanuts = '" + string_list[5] + "', crustacean_shellfish = '" + string_list[6] + "', soybeans = '" + string_list[7] + "', sesame = '" + string_list[8] + "', mushrooms = '" + string_list[9] + "' WHERE patient_id = '" + plan.patient_id + "'");
 
             }
         }
@@ -140,18 +142,9 @@ namespace DietApp
                 cal_intake=1.9*bmr;
             }
             int days = program.weeks_of_dieting * 7;
-            if (program.reason_to_diet == "Weight Loss")
-            {
-                double kg_to_lose = bmi.weight - program.desired_weight;
-                double weight_per_day = kg_to_lose / days;
-                cal_intake -= (weight_per_day * 3500 / 0.5);
-            }
-            else if (program.reason_to_diet == "Weight Gain") 
-            {
-                double kg_to_gain = program.desired_weight - bmi.weight;
-                double weight_per_day = kg_to_gain / days;
-                cal_intake += (weight_per_day * 3500 / 0.5);
-            }
+            /*double kg_to_reach = Math.Abs(bmi.weight - program.desired_weight);
+            double weight_per_day = kg_to_reach / days;
+            cal_intake -= (weight_per_day * 3500 / 0.5);*/
 
             //2 search database table (food) for appropriate food
             string[] exclude = program.exclude_string.Split(',');
@@ -160,21 +153,24 @@ namespace DietApp
 
             List<string> meals_fromDB = new List<string> ();
             List<List<string>> result_table=DatabaseManager.returnData("select foodname,includes from food where is_snack='0'and diet='" + program.type_of_diet+"'");
-            for(int i = 0; i < result_table.Count; i++)
+            for (int i = 0; i < result_table.Count; i++)
             {
                 bool flag = false;
                 int j = 0;
-                while (!flag || j < exclude_list.Count-1)
+                int excludeListCount = exclude_list.Count;
+
+                while (!flag && j < excludeListCount)
                 {
                     flag = result_table[i][1].Contains(exclude_list[j]);
                     j++;
                 }
+
                 if (!flag)
                 {
                     meals_fromDB.Add(result_table[i][0]);
                 }
             }
-            
+
             //and appropriate snacks
             List<string> snack_fromDB = new List<string>();
             result_table = DatabaseManager.returnData("select foodname,includes from food where is_snack='1'and diet='" + program.type_of_diet + "'");
@@ -182,14 +178,17 @@ namespace DietApp
             {
                 bool flag = false;
                 int j = 0;
-                while (!flag || j < exclude_list.Count-1)
+                int excludeListCount = exclude_list.Count;
+
+                while (!flag && j < excludeListCount)
                 {
                     flag = result_table[i][1].Contains(exclude_list[j]);
                     j++;
                 }
+
                 if (!flag)
                 {
-                    snack_fromDB.Add(result_table[i][0]);
+                    meals_fromDB.Add(result_table[i][0]);
                 }
             }
 
@@ -222,30 +221,36 @@ namespace DietApp
                     {
                         rnd = random.Next(0, meals_fromDB.Count);
                         breakfast_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + meals_fromDB[rnd] + "'");
-                        estimated_intake += int.Parse(breakfast_table[0][1]);
+                        estimated_intake += double.Parse(breakfast_table[0][1]);
                         breakfast_name = breakfast_table[0][0];
                     }
                     if (!(lunch_name.Equals("-"))) {
                         rnd = random.Next(0, meals_fromDB.Count);
                         lunch_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + meals_fromDB[rnd] + "'");
-                        estimated_intake += int.Parse(lunch_table[0][1]);
+                        estimated_intake += double.Parse(lunch_table[0][1]);
                         lunch_name = lunch_table[0][0];
                     }
                     if (!(dinner_name.Equals("-"))) {
                         rnd = random.Next(0, meals_fromDB.Count);
                         dinner_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + meals_fromDB[rnd] + "'"); 
-                        estimated_intake += int.Parse(dinner_table[0][1]);
+                        estimated_intake += double.Parse(dinner_table[0][1]);
                         dinner_name = dinner_table[0][0];
-                    }   
-                    if (!(snack_name.Equals("-"))) {
+                    }
+                    if (!(snack_name.Equals("-")))
+                    {
                         rnd = random.Next(0, snack_fromDB.Count);
                         snack_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + snack_fromDB[rnd] + "'");
-                        estimated_intake += int.Parse(snack_table[0][1]);
-                        lunch_name = lunch_table[0][0];
+                        estimated_intake += double.Parse(snack_table[0][1]);
+                        snack_name = snack_table[0][0];
                     }
-                    if (Math.Abs(estimated_intake - cal_intake) <= 100)
+
+                    if (Math.Abs(estimated_intake - cal_intake) <= 400)
                     {
                         flag = true;  
+                    }
+                    else
+                    {
+                        estimated_intake = 0;
                     }
                 }
                 Food breakfast= null;

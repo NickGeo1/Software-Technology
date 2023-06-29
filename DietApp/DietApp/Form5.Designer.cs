@@ -1332,14 +1332,21 @@
             // 
             this.maskedTextBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.maskedTextBox3.BeepOnError = true;
+            this.maskedTextBox3.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.maskedTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox3.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.maskedTextBox3.Location = new System.Drawing.Point(227, 63);
             this.maskedTextBox3.Mask = "000.00";
             this.maskedTextBox3.Name = "maskedTextBox3";
             this.maskedTextBox3.PromptChar = '0';
+            this.maskedTextBox3.ResetOnPrompt = false;
+            this.maskedTextBox3.ResetOnSpace = false;
+            this.maskedTextBox3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.maskedTextBox3.Size = new System.Drawing.Size(72, 29);
+            this.maskedTextBox3.SkipLiterals = false;
             this.maskedTextBox3.TabIndex = 65;
             this.maskedTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.maskedTextBox3.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.maskedTextBox3.TextChanged += new System.EventHandler(this.maskedTextBox3_TextChanged);
             // 
             // maskedTextBox4
