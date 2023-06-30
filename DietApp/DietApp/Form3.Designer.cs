@@ -87,11 +87,12 @@
             this.breakfast_sun.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.breakfast_sun.AutoSize = true;
             this.breakfast_sun.BackColor = System.Drawing.Color.Transparent;
-            this.breakfast_sun.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breakfast_sun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.breakfast_sun.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.breakfast_sun.Location = new System.Drawing.Point(104, 102);
+            this.breakfast_sun.Location = new System.Drawing.Point(100, 99);
             this.breakfast_sun.Name = "breakfast_sun";
-            this.breakfast_sun.Size = new System.Drawing.Size(0, 25);
+            this.breakfast_sun.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.breakfast_sun.Size = new System.Drawing.Size(5, 30);
             this.breakfast_sun.TabIndex = 2;
             // 
             // breakfast_mon
@@ -99,11 +100,12 @@
             this.breakfast_mon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.breakfast_mon.AutoSize = true;
             this.breakfast_mon.BackColor = System.Drawing.Color.Transparent;
-            this.breakfast_mon.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breakfast_mon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.breakfast_mon.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.breakfast_mon.Location = new System.Drawing.Point(207, 102);
+            this.breakfast_mon.Location = new System.Drawing.Point(205, 100);
             this.breakfast_mon.Name = "breakfast_mon";
-            this.breakfast_mon.Size = new System.Drawing.Size(0, 25);
+            this.breakfast_mon.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.breakfast_mon.Size = new System.Drawing.Size(5, 30);
             this.breakfast_mon.TabIndex = 3;
             // 
             // breakfast_tue
@@ -111,11 +113,12 @@
             this.breakfast_tue.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.breakfast_tue.AutoSize = true;
             this.breakfast_tue.BackColor = System.Drawing.Color.Transparent;
-            this.breakfast_tue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breakfast_tue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.breakfast_tue.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.breakfast_tue.Location = new System.Drawing.Point(314, 102);
+            this.breakfast_tue.Location = new System.Drawing.Point(311, 99);
             this.breakfast_tue.Name = "breakfast_tue";
-            this.breakfast_tue.Size = new System.Drawing.Size(0, 25);
+            this.breakfast_tue.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.breakfast_tue.Size = new System.Drawing.Size(5, 30);
             this.breakfast_tue.TabIndex = 4;
             // 
             // breakfast_wed
@@ -123,11 +126,12 @@
             this.breakfast_wed.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.breakfast_wed.AutoSize = true;
             this.breakfast_wed.BackColor = System.Drawing.Color.Transparent;
-            this.breakfast_wed.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breakfast_wed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.breakfast_wed.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.breakfast_wed.Location = new System.Drawing.Point(418, 102);
+            this.breakfast_wed.Location = new System.Drawing.Point(415, 99);
             this.breakfast_wed.Name = "breakfast_wed";
-            this.breakfast_wed.Size = new System.Drawing.Size(0, 25);
+            this.breakfast_wed.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.breakfast_wed.Size = new System.Drawing.Size(5, 30);
             this.breakfast_wed.TabIndex = 5;
             // 
             // breakfast_thu
@@ -135,11 +139,12 @@
             this.breakfast_thu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.breakfast_thu.AutoSize = true;
             this.breakfast_thu.BackColor = System.Drawing.Color.Transparent;
-            this.breakfast_thu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breakfast_thu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.breakfast_thu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.breakfast_thu.Location = new System.Drawing.Point(525, 102);
+            this.breakfast_thu.Location = new System.Drawing.Point(521, 99);
             this.breakfast_thu.Name = "breakfast_thu";
-            this.breakfast_thu.Size = new System.Drawing.Size(0, 25);
+            this.breakfast_thu.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.breakfast_thu.Size = new System.Drawing.Size(5, 30);
             this.breakfast_thu.TabIndex = 6;
             // 
             // breakfast_fri
@@ -147,11 +152,12 @@
             this.breakfast_fri.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.breakfast_fri.AutoSize = true;
             this.breakfast_fri.BackColor = System.Drawing.Color.Transparent;
-            this.breakfast_fri.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breakfast_fri.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.breakfast_fri.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.breakfast_fri.Location = new System.Drawing.Point(628, 102);
+            this.breakfast_fri.Location = new System.Drawing.Point(627, 99);
             this.breakfast_fri.Name = "breakfast_fri";
-            this.breakfast_fri.Size = new System.Drawing.Size(0, 25);
+            this.breakfast_fri.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.breakfast_fri.Size = new System.Drawing.Size(5, 30);
             this.breakfast_fri.TabIndex = 7;
             // 
             // breakfast_sat
@@ -159,11 +165,12 @@
             this.breakfast_sat.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.breakfast_sat.AutoSize = true;
             this.breakfast_sat.BackColor = System.Drawing.Color.Transparent;
-            this.breakfast_sat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breakfast_sat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.breakfast_sat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.breakfast_sat.Location = new System.Drawing.Point(735, 102);
+            this.breakfast_sat.Location = new System.Drawing.Point(733, 99);
             this.breakfast_sat.Name = "breakfast_sat";
-            this.breakfast_sat.Size = new System.Drawing.Size(0, 25);
+            this.breakfast_sat.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.breakfast_sat.Size = new System.Drawing.Size(5, 30);
             this.breakfast_sat.TabIndex = 8;
             // 
             // lunch_sun
@@ -171,11 +178,12 @@
             this.lunch_sun.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lunch_sun.AutoSize = true;
             this.lunch_sun.BackColor = System.Drawing.Color.Transparent;
-            this.lunch_sun.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lunch_sun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lunch_sun.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lunch_sun.Location = new System.Drawing.Point(104, 199);
+            this.lunch_sun.Location = new System.Drawing.Point(100, 196);
             this.lunch_sun.Name = "lunch_sun";
-            this.lunch_sun.Size = new System.Drawing.Size(0, 25);
+            this.lunch_sun.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.lunch_sun.Size = new System.Drawing.Size(5, 30);
             this.lunch_sun.TabIndex = 9;
             // 
             // lunch_mon
@@ -183,11 +191,12 @@
             this.lunch_mon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lunch_mon.AutoSize = true;
             this.lunch_mon.BackColor = System.Drawing.Color.Transparent;
-            this.lunch_mon.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lunch_mon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lunch_mon.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lunch_mon.Location = new System.Drawing.Point(207, 199);
+            this.lunch_mon.Location = new System.Drawing.Point(205, 192);
             this.lunch_mon.Name = "lunch_mon";
-            this.lunch_mon.Size = new System.Drawing.Size(0, 25);
+            this.lunch_mon.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.lunch_mon.Size = new System.Drawing.Size(5, 30);
             this.lunch_mon.TabIndex = 10;
             // 
             // lunch_tue
@@ -195,11 +204,12 @@
             this.lunch_tue.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lunch_tue.AutoSize = true;
             this.lunch_tue.BackColor = System.Drawing.Color.Transparent;
-            this.lunch_tue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lunch_tue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lunch_tue.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lunch_tue.Location = new System.Drawing.Point(318, 199);
+            this.lunch_tue.Location = new System.Drawing.Point(313, 191);
             this.lunch_tue.Name = "lunch_tue";
-            this.lunch_tue.Size = new System.Drawing.Size(0, 25);
+            this.lunch_tue.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.lunch_tue.Size = new System.Drawing.Size(5, 30);
             this.lunch_tue.TabIndex = 11;
             // 
             // lunch_wed
@@ -207,11 +217,12 @@
             this.lunch_wed.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lunch_wed.AutoSize = true;
             this.lunch_wed.BackColor = System.Drawing.Color.Transparent;
-            this.lunch_wed.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lunch_wed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lunch_wed.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lunch_wed.Location = new System.Drawing.Point(421, 199);
+            this.lunch_wed.Location = new System.Drawing.Point(415, 191);
             this.lunch_wed.Name = "lunch_wed";
-            this.lunch_wed.Size = new System.Drawing.Size(0, 25);
+            this.lunch_wed.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.lunch_wed.Size = new System.Drawing.Size(5, 30);
             this.lunch_wed.TabIndex = 12;
             // 
             // lunch_thu
@@ -219,11 +230,12 @@
             this.lunch_thu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lunch_thu.AutoSize = true;
             this.lunch_thu.BackColor = System.Drawing.Color.Transparent;
-            this.lunch_thu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lunch_thu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lunch_thu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lunch_thu.Location = new System.Drawing.Point(529, 199);
+            this.lunch_thu.Location = new System.Drawing.Point(521, 192);
             this.lunch_thu.Name = "lunch_thu";
-            this.lunch_thu.Size = new System.Drawing.Size(0, 25);
+            this.lunch_thu.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.lunch_thu.Size = new System.Drawing.Size(5, 30);
             this.lunch_thu.TabIndex = 13;
             // 
             // lunch_fri
@@ -231,11 +243,12 @@
             this.lunch_fri.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lunch_fri.AutoSize = true;
             this.lunch_fri.BackColor = System.Drawing.Color.Transparent;
-            this.lunch_fri.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lunch_fri.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lunch_fri.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lunch_fri.Location = new System.Drawing.Point(631, 199);
+            this.lunch_fri.Location = new System.Drawing.Point(627, 191);
             this.lunch_fri.Name = "lunch_fri";
-            this.lunch_fri.Size = new System.Drawing.Size(0, 25);
+            this.lunch_fri.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.lunch_fri.Size = new System.Drawing.Size(5, 30);
             this.lunch_fri.TabIndex = 14;
             // 
             // lunch_sat
@@ -243,11 +256,12 @@
             this.lunch_sat.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lunch_sat.AutoSize = true;
             this.lunch_sat.BackColor = System.Drawing.Color.Transparent;
-            this.lunch_sat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lunch_sat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lunch_sat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lunch_sat.Location = new System.Drawing.Point(738, 199);
+            this.lunch_sat.Location = new System.Drawing.Point(733, 191);
             this.lunch_sat.Name = "lunch_sat";
-            this.lunch_sat.Size = new System.Drawing.Size(0, 25);
+            this.lunch_sat.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.lunch_sat.Size = new System.Drawing.Size(5, 30);
             this.lunch_sat.TabIndex = 15;
             // 
             // snack_sun
@@ -255,11 +269,12 @@
             this.snack_sun.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.snack_sun.AutoSize = true;
             this.snack_sun.BackColor = System.Drawing.Color.Transparent;
-            this.snack_sun.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.snack_sun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.snack_sun.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.snack_sun.Location = new System.Drawing.Point(104, 292);
+            this.snack_sun.Location = new System.Drawing.Point(100, 289);
             this.snack_sun.Name = "snack_sun";
-            this.snack_sun.Size = new System.Drawing.Size(0, 25);
+            this.snack_sun.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.snack_sun.Size = new System.Drawing.Size(5, 30);
             this.snack_sun.TabIndex = 16;
             // 
             // snack_mon
@@ -267,11 +282,12 @@
             this.snack_mon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.snack_mon.AutoSize = true;
             this.snack_mon.BackColor = System.Drawing.Color.Transparent;
-            this.snack_mon.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.snack_mon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.snack_mon.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.snack_mon.Location = new System.Drawing.Point(207, 292);
+            this.snack_mon.Location = new System.Drawing.Point(204, 284);
             this.snack_mon.Name = "snack_mon";
-            this.snack_mon.Size = new System.Drawing.Size(0, 25);
+            this.snack_mon.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.snack_mon.Size = new System.Drawing.Size(5, 30);
             this.snack_mon.TabIndex = 17;
             // 
             // snack_tue
@@ -279,11 +295,12 @@
             this.snack_tue.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.snack_tue.AutoSize = true;
             this.snack_tue.BackColor = System.Drawing.Color.Transparent;
-            this.snack_tue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.snack_tue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.snack_tue.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.snack_tue.Location = new System.Drawing.Point(316, 292);
+            this.snack_tue.Location = new System.Drawing.Point(311, 284);
             this.snack_tue.Name = "snack_tue";
-            this.snack_tue.Size = new System.Drawing.Size(0, 25);
+            this.snack_tue.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.snack_tue.Size = new System.Drawing.Size(5, 30);
             this.snack_tue.TabIndex = 18;
             // 
             // snack_wed
@@ -291,11 +308,12 @@
             this.snack_wed.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.snack_wed.AutoSize = true;
             this.snack_wed.BackColor = System.Drawing.Color.Transparent;
-            this.snack_wed.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.snack_wed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.snack_wed.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.snack_wed.Location = new System.Drawing.Point(421, 292);
+            this.snack_wed.Location = new System.Drawing.Point(415, 284);
             this.snack_wed.Name = "snack_wed";
-            this.snack_wed.Size = new System.Drawing.Size(0, 25);
+            this.snack_wed.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.snack_wed.Size = new System.Drawing.Size(5, 30);
             this.snack_wed.TabIndex = 19;
             // 
             // snack_thu
@@ -303,11 +321,12 @@
             this.snack_thu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.snack_thu.AutoSize = true;
             this.snack_thu.BackColor = System.Drawing.Color.Transparent;
-            this.snack_thu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.snack_thu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.snack_thu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.snack_thu.Location = new System.Drawing.Point(529, 292);
+            this.snack_thu.Location = new System.Drawing.Point(521, 284);
             this.snack_thu.Name = "snack_thu";
-            this.snack_thu.Size = new System.Drawing.Size(0, 25);
+            this.snack_thu.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.snack_thu.Size = new System.Drawing.Size(5, 30);
             this.snack_thu.TabIndex = 20;
             // 
             // snack_fri
@@ -315,11 +334,12 @@
             this.snack_fri.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.snack_fri.AutoSize = true;
             this.snack_fri.BackColor = System.Drawing.Color.Transparent;
-            this.snack_fri.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.snack_fri.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.snack_fri.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.snack_fri.Location = new System.Drawing.Point(631, 292);
+            this.snack_fri.Location = new System.Drawing.Point(627, 284);
             this.snack_fri.Name = "snack_fri";
-            this.snack_fri.Size = new System.Drawing.Size(0, 25);
+            this.snack_fri.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.snack_fri.Size = new System.Drawing.Size(5, 30);
             this.snack_fri.TabIndex = 21;
             // 
             // snack_sat
@@ -327,11 +347,12 @@
             this.snack_sat.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.snack_sat.AutoSize = true;
             this.snack_sat.BackColor = System.Drawing.Color.Transparent;
-            this.snack_sat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.snack_sat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.snack_sat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.snack_sat.Location = new System.Drawing.Point(738, 292);
+            this.snack_sat.Location = new System.Drawing.Point(733, 284);
             this.snack_sat.Name = "snack_sat";
-            this.snack_sat.Size = new System.Drawing.Size(0, 25);
+            this.snack_sat.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.snack_sat.Size = new System.Drawing.Size(5, 30);
             this.snack_sat.TabIndex = 22;
             // 
             // dinner_sun
@@ -339,11 +360,12 @@
             this.dinner_sun.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dinner_sun.AutoSize = true;
             this.dinner_sun.BackColor = System.Drawing.Color.Transparent;
-            this.dinner_sun.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dinner_sun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dinner_sun.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dinner_sun.Location = new System.Drawing.Point(104, 382);
+            this.dinner_sun.Location = new System.Drawing.Point(100, 376);
             this.dinner_sun.Name = "dinner_sun";
-            this.dinner_sun.Size = new System.Drawing.Size(0, 25);
+            this.dinner_sun.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.dinner_sun.Size = new System.Drawing.Size(5, 30);
             this.dinner_sun.TabIndex = 23;
             // 
             // dinner_mon
@@ -351,11 +373,12 @@
             this.dinner_mon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dinner_mon.AutoSize = true;
             this.dinner_mon.BackColor = System.Drawing.Color.Transparent;
-            this.dinner_mon.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dinner_mon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dinner_mon.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dinner_mon.Location = new System.Drawing.Point(207, 382);
+            this.dinner_mon.Location = new System.Drawing.Point(204, 376);
             this.dinner_mon.Name = "dinner_mon";
-            this.dinner_mon.Size = new System.Drawing.Size(0, 25);
+            this.dinner_mon.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.dinner_mon.Size = new System.Drawing.Size(5, 30);
             this.dinner_mon.TabIndex = 24;
             // 
             // dinner_tue
@@ -363,11 +386,12 @@
             this.dinner_tue.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dinner_tue.AutoSize = true;
             this.dinner_tue.BackColor = System.Drawing.Color.Transparent;
-            this.dinner_tue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dinner_tue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dinner_tue.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dinner_tue.Location = new System.Drawing.Point(316, 382);
+            this.dinner_tue.Location = new System.Drawing.Point(311, 374);
             this.dinner_tue.Name = "dinner_tue";
-            this.dinner_tue.Size = new System.Drawing.Size(0, 25);
+            this.dinner_tue.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.dinner_tue.Size = new System.Drawing.Size(5, 30);
             this.dinner_tue.TabIndex = 25;
             // 
             // dinner_wed
@@ -375,11 +399,12 @@
             this.dinner_wed.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dinner_wed.AutoSize = true;
             this.dinner_wed.BackColor = System.Drawing.Color.Transparent;
-            this.dinner_wed.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dinner_wed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dinner_wed.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dinner_wed.Location = new System.Drawing.Point(418, 382);
+            this.dinner_wed.Location = new System.Drawing.Point(415, 374);
             this.dinner_wed.Name = "dinner_wed";
-            this.dinner_wed.Size = new System.Drawing.Size(0, 25);
+            this.dinner_wed.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.dinner_wed.Size = new System.Drawing.Size(5, 30);
             this.dinner_wed.TabIndex = 26;
             // 
             // dinner_thu
@@ -387,11 +412,12 @@
             this.dinner_thu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dinner_thu.AutoSize = true;
             this.dinner_thu.BackColor = System.Drawing.Color.Transparent;
-            this.dinner_thu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dinner_thu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dinner_thu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dinner_thu.Location = new System.Drawing.Point(525, 382);
+            this.dinner_thu.Location = new System.Drawing.Point(521, 376);
             this.dinner_thu.Name = "dinner_thu";
-            this.dinner_thu.Size = new System.Drawing.Size(0, 25);
+            this.dinner_thu.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.dinner_thu.Size = new System.Drawing.Size(5, 30);
             this.dinner_thu.TabIndex = 27;
             // 
             // dinner_fri
@@ -399,11 +425,12 @@
             this.dinner_fri.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dinner_fri.AutoSize = true;
             this.dinner_fri.BackColor = System.Drawing.Color.Transparent;
-            this.dinner_fri.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dinner_fri.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dinner_fri.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dinner_fri.Location = new System.Drawing.Point(628, 382);
+            this.dinner_fri.Location = new System.Drawing.Point(627, 376);
             this.dinner_fri.Name = "dinner_fri";
-            this.dinner_fri.Size = new System.Drawing.Size(0, 25);
+            this.dinner_fri.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.dinner_fri.Size = new System.Drawing.Size(5, 30);
             this.dinner_fri.TabIndex = 28;
             // 
             // dinner_sat
@@ -411,11 +438,12 @@
             this.dinner_sat.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dinner_sat.AutoSize = true;
             this.dinner_sat.BackColor = System.Drawing.Color.Transparent;
-            this.dinner_sat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dinner_sat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dinner_sat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dinner_sat.Location = new System.Drawing.Point(735, 382);
+            this.dinner_sat.Location = new System.Drawing.Point(733, 376);
             this.dinner_sat.Name = "dinner_sat";
-            this.dinner_sat.Size = new System.Drawing.Size(0, 25);
+            this.dinner_sat.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.dinner_sat.Size = new System.Drawing.Size(5, 30);
             this.dinner_sat.TabIndex = 29;
             // 
             // pictureBox2

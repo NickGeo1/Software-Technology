@@ -188,7 +188,7 @@ namespace DietApp
 
                 if (!flag)
                 {
-                    meals_fromDB.Add(result_table[i][0]);
+                    snack_fromDB.Add(result_table[i][0]);
                 }
             }
 
@@ -238,13 +238,14 @@ namespace DietApp
                     }
                     if (!(snack_name.Equals("-")))
                     {
+                        MessageBox.Show(snack_fromDB.Count.ToString());
                         rnd = random.Next(0, snack_fromDB.Count);
                         snack_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + snack_fromDB[rnd] + "'");
                         estimated_intake += double.Parse(snack_table[0][1]);
                         snack_name = snack_table[0][0];
                     }
 
-                    if (Math.Abs(estimated_intake - cal_intake) <= 400)
+                    if (Math.Abs(estimated_intake - cal_intake) <= 300)
                     {
                         flag = true;  
                     }
@@ -258,21 +259,27 @@ namespace DietApp
                 Food dinner = null;
                 Food snack = null;
 
-                if (!(breakfast_name.Equals("-"))) { 
+                if (!(breakfast_name.Equals("-"))) {
+                    MessageBox.Show(breakfast_table[0][1].ToString());
                     breakfast = new Food(breakfast_name, double.Parse(breakfast_table[0][1]), double.Parse(breakfast_table[0][2]), double.Parse(breakfast_table[0][3]), double.Parse(breakfast_table[0][4]), 0, program.type_of_diet,breakfast_table[0][5].Split(',').ToList());
                 }
+                MessageBox.Show(breakfast.foodname);
+
                 if (!(lunch_name.Equals("-")))
                 {
                     lunch = new Food(lunch_name, double.Parse(lunch_table[0][1]), double.Parse(lunch_table[0][2]), double.Parse(lunch_table[0][3]), double.Parse(lunch_table[0][4]), 0, program.type_of_diet, lunch_table[0][5].Split(',').ToList());
                 }
+
                 if (!(dinner_name.Equals("-")))
                 {
                     dinner = new Food(dinner_name, double.Parse(dinner_table[0][1]), double.Parse(dinner_table[0][2]), double.Parse(dinner_table[0][3]), double.Parse(dinner_table[0][4]), 0, program.type_of_diet, dinner_table[0][5].Split(',').ToList());
                 }
+
                 if (!(snack_name.Equals("-")))
                 {
                     snack = new Food(snack_name, double.Parse(snack_table[0][1]), double.Parse(snack_table[0][2]), double.Parse(snack_table[0][3]), double.Parse(snack_table[0][4]), 0, program.type_of_diet, snack_table[0][5].Split(',').ToList());
                 }
+
                 //4 store the 7 DailyProgram Objects in a weekly_diet List and store it to patient object: patient.weekly_diet = weekly_diet
                 DailyProgram new_program = new DailyProgram(week_days[i], breakfast, lunch, snack, dinner, program.patient_id);
                 weekly_diet.Add(new_program);
@@ -281,11 +288,11 @@ namespace DietApp
                 List<List<string>> list = DatabaseManager.returnData("select id_and_day from eating where patient_id='" + new_program.patient_id + "'");
                 if (list == null)
                 {
-                    DatabaseManager.updateData("insert into eating(day, breakfast, lunch, snack, dinner, patient_id, id_and_day) values('" + new_program.day + "','" + new_program.breakfast + "','" + new_program.lunch + "','" + new_program.snack + "','" + new_program.dinner + "','" + new_program.patient_id + "','" + ConcatenatedString + "')");
+                    DatabaseManager.updateData("INSERT into eating(day, breakfast, lunch, snack, dinner, patient_id, id_and_day) values('" + new_program.day + "','" + new_program.breakfast.foodname + "','" + new_program.lunch.foodname + "','" + new_program.snack.foodname + "','" + new_program.dinner.foodname + "','" + new_program.patient_id + "','" + ConcatenatedString + "')");
                 }
                 else
                 {
-                    DatabaseManager.updateData("UPDATE eating SET breakfast = '" + new_program.breakfast + "', lunch = '" + new_program.lunch + "', snack = '" + new_program.snack + "', dinner = '" + new_program.dinner + "'WHERE day = '" + new_program.day + "' AND patient_id = '" + new_program.patient_id + "'");
+                    DatabaseManager.updateData("UPDATE eating SET breakfast = '" + new_program.breakfast.foodname + "', lunch = '" + new_program.lunch.foodname + "', snack = '" + new_program.snack.foodname + "', dinner = '" + new_program.dinner.foodname + "'WHERE day = '" + new_program.day + "' AND patient_id = '" + new_program.patient_id + "'");
                 }
             }
 
