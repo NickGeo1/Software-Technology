@@ -82,7 +82,7 @@ namespace DietApp
 
             }
 
-            if (patient.weekly_diet == null)
+            if (patient.weekly_diet.Count == 0)
             {
                 MessageBox.Show("Patient with id " + patient_id + " does not have weekly diet yet");
                 return;

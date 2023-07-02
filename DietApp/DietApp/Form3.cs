@@ -63,6 +63,11 @@ namespace DietApp
             toolTip1 = new ToolTip();
 
             Users.viewPlan(maskedTextBox1.Text);
+
+            // if at least on day is null, all are null so return in case patient id not found
+            if (Monday == null)
+                return;
+
             breakfast_sun.Text = Sunday.breakfast.foodname.Replace(" ", "\n");
             toolTip1 = new ToolTip();
             toolTip1.SetToolTip(breakfast_sun, "kcal:" + Sunday.breakfast.kcal + Environment.NewLine + "fats:" + Sunday.breakfast.fats + Environment.NewLine + "protein:" + Sunday.breakfast.protein + Environment.NewLine + "carbs:" + Sunday.breakfast.carbohydrates + Environment.NewLine + "includes:" + Sunday.breakfast.kcal);
