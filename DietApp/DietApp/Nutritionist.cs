@@ -56,12 +56,12 @@ namespace DietApp
             if (list == null)
             {
                 //program data
-                DatabaseManager.updateData("insert into program(patient_id,type_of_diet,meals,reason_to_diet,desired_weight,weeks_of_dieting,hours_of_sleep,hours_of_excersise,sex) " +
-                "values('" + plan.patient_id + "','" + plan.type_of_diet +"','" + plan.meal_string +"','" + plan.reason_to_diet + "','" + plan.desired_weight + "','" + plan.weeks_of_dieting +"','" + plan.hours_of_sleep + "','" + plan.hours_of_excersise + "','" + bmi.patient_sex + "')");
+                DatabaseManager.updateData("insert into program(patient_id,type_of_diet,meals,reason_to_diet,desired_weight,weeks_of_dieting,hours_of_sleep,hours_of_excersise) " +
+                "values('" + plan.patient_id + "','" + plan.type_of_diet +"','" + plan.meal_string +"','" + plan.reason_to_diet + "','" + plan.desired_weight + "','" + plan.weeks_of_dieting +"','" + plan.hours_of_sleep + "','" + plan.hours_of_excersise + "')");
 
                 //bmi data
-                DatabaseManager.updateData("insert into bmi(patient_id, bmi_of_patient, age, weight, height) values " +
-                "('" + bmi.patient_id + "','" + bmi.compute_BMI() + "','" + bmi.age + "','" + bmi.weight.ToString().Replace(",", ".") + "','" + bmi.height + "')");
+                DatabaseManager.updateData("insert into bmi(patient_id, bmi_of_patient, age, weight, height, sex) values " +
+                "('" + bmi.patient_id + "','" + bmi.compute_BMI() + "','" + bmi.age + "','" + bmi.weight.ToString().Replace(",", ".") + "','" + bmi.height + "','" + bmi.patient_sex + "')");
 
                 //special needs data
                 DatabaseManager.updateData("insert into special_needs values('" + plan.patient_id + "','" + boolean_special_needs + "')");
@@ -72,15 +72,15 @@ namespace DietApp
             else
             {
                 // program data update
-                DatabaseManager.updateData("UPDATE program SET type_of_diet = '" + plan.type_of_diet + "', meals = '" + plan.meal_string + "', reason_to_diet = '" + plan.reason_to_diet + "', desired_weight = '" + plan.desired_weight + "', weeks_of_dieting = '" + plan.weeks_of_dieting + "', hours_of_sleep = '" + plan.hours_of_sleep + "', hours_of_excersise = '" + plan.hours_of_excersise + "', sex = '" + bmi.patient_sex + "' WHERE patient_id = '" + plan.patient_id + "'");
+                DatabaseManager.updateData("UPDATE program SET type_of_diet = '" + plan.type_of_diet + "', meals = '" + plan.meal_string + "', reason_to_diet = '" + plan.reason_to_diet + "', desired_weight = '" + plan.desired_weight + "', weeks_of_dieting = '" + plan.weeks_of_dieting + "', hours_of_sleep = '" + plan.hours_of_sleep + "', hours_of_excersise = '" + plan.hours_of_excersise + "' WHERE patient_id = '" + plan.patient_id + "'");
 
                 // bmi data update
-                DatabaseManager.updateData("UPDATE bmi SET bmi_of_patient = '" + bmi.compute_BMI() + "', age = '" + bmi.age + "', weight = '" + bmi.weight.ToString().Replace(",", ".") + "', height = '" + bmi.height + "' WHERE patient_id = '" + bmi.patient_id + "'");
+                DatabaseManager.updateData("UPDATE bmi SET bmi_of_patient = '" + bmi.compute_BMI() + "', age = '" + bmi.age + "', weight = '" + bmi.weight.ToString().Replace(",", ".") + "', height = '" + bmi.height + "', sex = '" + bmi.patient_sex + "' WHERE patient_id = '" + bmi.patient_id + "'");
 
                 // special needs data update
                 string clean_input = boolean_special_needs.Replace("'", "");
                 List<int> string_list = clean_input.Split(',').Select(element => int.Parse(element)).ToList();
-                DatabaseManager.updateData("UPDATE special_needs SET cancer = '" + string_list[0] + "', diabetes = '" + string_list[1] + "', hyperthyroidism = '" + string_list[2] + "', hypothyroidism = '" + string_list[3] + "', high_blood_cholesterol = '" + string_list[4] + "', high_blood_sugar = '" + string_list[5] + "', pregnancy = '" + string_list[6] + "', breast_feeding = '" + string_list[7] + "', cardiovascular_diseases = '" + string_list[8] + "', osteoporosis = '" + string_list[9] + "' WHERE patient_id = '" + plan.patient_id + "'");
+                DatabaseManager.updateData("UPDATE special_needs SET cancer = '" + string_list[0] + "', diabetes = '" + string_list[1] + "', hyperthyroidism = '" + string_list[2] + "', hyporthiroidism = '" + string_list[3] + "', high_blood_choresterol = '" + string_list[4] + "', high_blood_sugar = '" + string_list[5] + "', pregnacy = '" + string_list[6] + "', breast_feeding = '" + string_list[7] + "', cardiovascular_diseases = '" + string_list[8] + "', osteoporosis = '" + string_list[9] + "' WHERE patient_id = '" + plan.patient_id + "'");
 
                 // excluding data update
                 clean_input = boolean_exclude.Replace("'", "");
