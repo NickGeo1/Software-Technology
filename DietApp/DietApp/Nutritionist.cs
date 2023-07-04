@@ -290,13 +290,18 @@ namespace DietApp
                 string ConcatenatedString = string.Join(",", new_program.patient_id.ToString(),new_program.day);
                 //5 store the appropriate foods in database table (eating)
                 List<List<string>> list = DatabaseManager.returnData("select id_and_day from eating where patient_id='" + new_program.patient_id + "'");
+                string breakfastname = breakfast == null ? "-" : breakfast.foodname;
+                string snackname = snack == null ? "-" : snack.foodname;
+                string lunchname = lunch == null ? "-" : lunch.foodname;
+                string dinnername = dinner == null ? "-" : dinner.foodname;
+
                 if (list == null)
                 {
-                    DatabaseManager.updateData("INSERT into eating(day, breakfast, lunch, snack, dinner, patient_id, id_and_day) values('" + new_program.day + "','" + new_program.breakfast.foodname + "','" + new_program.lunch.foodname + "','" + new_program.snack.foodname + "','" + new_program.dinner.foodname + "','" + new_program.patient_id + "','" + ConcatenatedString + "')");
+                    DatabaseManager.updateData("INSERT into eating(day, breakfast, lunch, snack, dinner, patient_id, id_and_day) values('" + new_program.day + "','" + breakfastname + "','" + lunchname + "','" + snackname + "','" + dinnername + "','" + new_program.patient_id + "','" + ConcatenatedString + "')");
                 }
                 else
                 {
-                    DatabaseManager.updateData("UPDATE eating SET breakfast = '" + new_program.breakfast.foodname + "', lunch = '" + new_program.lunch.foodname + "', snack = '" + new_program.snack.foodname + "', dinner = '" + new_program.dinner.foodname + "'WHERE day = '" + new_program.day + "' AND patient_id = '" + new_program.patient_id + "'");
+                    DatabaseManager.updateData("UPDATE eating SET breakfast = '" + breakfastname + "', lunch = '" + lunchname + "', snack = '" + snackname + "', dinner = '" + dinnername + "'WHERE day = '" + new_program.day + "' AND patient_id = '" + new_program.patient_id + "'");
                 }
             }
 
