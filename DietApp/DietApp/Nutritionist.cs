@@ -224,27 +224,27 @@ namespace DietApp
                     if (!(breakfast_name.Equals("-")))
                     {
                         rnd = random.Next(0, meals_fromDB.Count);
-                        breakfast_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + meals_fromDB[rnd] + "'");
+                        breakfast_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + meals_fromDB[rnd] + "'");
                         estimated_intake += double.Parse(breakfast_table[0][1]);
                         breakfast_name = breakfast_table[0][0];
                     }
                     if (!(lunch_name.Equals("-"))) {
                         rnd = random.Next(0, meals_fromDB.Count);
-                        lunch_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + meals_fromDB[rnd] + "'");
+                        lunch_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + meals_fromDB[rnd] + "'");
                         estimated_intake += double.Parse(lunch_table[0][1]);
                         lunch_name = lunch_table[0][0];
                     }
                     if (!(dinner_name.Equals("-"))) {
                         rnd = random.Next(0, meals_fromDB.Count);
-                        dinner_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + meals_fromDB[rnd] + "'"); 
+                        dinner_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + meals_fromDB[rnd] + "'"); 
                         estimated_intake += double.Parse(dinner_table[0][1]);
                         dinner_name = dinner_table[0][0];
                     }
                     if (!(snack_name.Equals("-")))
                     {
-                        MessageBox.Show(snack_fromDB.Count.ToString());
+                        //MessageBox.Show(snack_fromDB.Count.ToString());
                         rnd = random.Next(0, snack_fromDB.Count);
-                        snack_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,carbs,includes from food where foodname='" + snack_fromDB[rnd] + "'");
+                        snack_table = DatabaseManager.returnData("select foodname,kcal,fats,protein,corbohydrates,includes from food where foodname='" + snack_fromDB[rnd] + "'");
                         estimated_intake += double.Parse(snack_table[0][1]);
                         snack_name = snack_table[0][0];
                     }
@@ -264,10 +264,10 @@ namespace DietApp
                 Food snack = null;
 
                 if (!(breakfast_name.Equals("-"))) {
-                    MessageBox.Show(breakfast_table[0][1].ToString());
+                    //MessageBox.Show(breakfast_table[0][1].ToString());
                     breakfast = new Food(breakfast_name, double.Parse(breakfast_table[0][1]), double.Parse(breakfast_table[0][2]), double.Parse(breakfast_table[0][3]), double.Parse(breakfast_table[0][4]), 0, program.type_of_diet,breakfast_table[0][5].Split(',').ToList());
                 }
-                MessageBox.Show(breakfast.foodname);
+                //MessageBox.Show(breakfast.foodname);
 
                 if (!(lunch_name.Equals("-")))
                 {
