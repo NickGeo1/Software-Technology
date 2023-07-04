@@ -44,10 +44,14 @@ namespace DietApp
             registeredPatients.Add(patient);
         }
 
-        //Not functional yet
-        public void registerNewnutritionist()
+        public void registerNewnutritionist(String id,String first_name, String last_name,String password)
         {
+            DatabaseManager.updateData("insert into users(id, role) values('" + id + "','nutritionist')");
 
+            DatabaseManager.updateData("insert into nutritionist (id, First_name, Last_name, password) values" +
+            "('" + id + "','" + first_name + "','" + last_name + "','" + password + "')");
+
+        
         }
 
         public void createNewplan(DietRequirements plan, BMI bmi, string boolean_special_needs, string boolean_exclude)

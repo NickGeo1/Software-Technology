@@ -49,6 +49,12 @@ namespace DietApp
                 }
                 else //nutritionist register by nutritionist (TODO)
                 {
+                    Diet.active_user.registerNewnutritionist(textBox4.Text, textBox1.Text, textBox2.Text,textBox3.Text);
+                    MessageBox.Show("Patient " + textBox4.Text + " successfuly registered!");
+
+                    flag = false;
+                    new Form2().Show();
+                    this.Close();
 
                 }
             }
@@ -115,7 +121,7 @@ namespace DietApp
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, @"^[A-Za-z\s]+$"))
+            if ((!System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, @"^[A-Za-z\s]+$")&& !textBox1.Text.Equals("")))
             {
                 MessageBox.Show("Please enter letters only");
             }
@@ -123,7 +129,7 @@ namespace DietApp
 
         private void textBox2_Validating(object sender, CancelEventArgs e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox2.Text, @"^[a-zA-Z]+$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox2.Text, @"^[a-zA-Z]+$") && !textBox2.Text.Equals(""))
             {
                 MessageBox.Show("Please enter letters only");
             }
@@ -131,7 +137,7 @@ namespace DietApp
 
         private void textBox3_Validating(object sender, CancelEventArgs e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox3.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox3.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$") && !textBox3.Text.Equals(""))
             {
                 MessageBox.Show("Password must contain at least one lowercase letter,one uppercase letter, one digit,one special character and must be at least 8 characters long");
             }
@@ -139,7 +145,7 @@ namespace DietApp
 
         private void textBox7_Validating(object sender, CancelEventArgs e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox3.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox3.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$") && !textBox3.Text.Equals(""))
             {
                 MessageBox.Show("Password must contain at least one lowercase letter,one uppercase letter, one digit,one special character and must be at least 8 characters long");
             }
@@ -147,7 +153,7 @@ namespace DietApp
 
         private void textBox7_Leave(object sender, EventArgs e)
         {
-            if(textBox7.Text!=textBox3.Text)
+            if(textBox7.Text!=textBox3.Text && !textBox7.Text.Equals(""))
             {
                 MessageBox.Show("Passwords must be the same");
             }
