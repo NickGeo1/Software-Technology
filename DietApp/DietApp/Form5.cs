@@ -100,8 +100,9 @@ namespace DietApp
                 return;
             }
 
+
             // check num values
-            double num;
+            double num = 0;
 
             try
             {
@@ -111,6 +112,21 @@ namespace DietApp
                     {
                         num = Double.Parse(mt.Text); //try casting to double
                     }
+
+                    //set minimum values to weight and height to avoid searching for low calories
+
+                    if (mt.Name.Equals("maskedTextBox3") && num < 20)
+                    {
+                        MessageBox.Show("Weight must be at least 20 kg");
+                        return;
+                    }
+
+                    if (mt.Name.Equals("maskedTextBox4") && num < 100)
+                    {
+                        MessageBox.Show("Height must be at least 100 cm");
+                        return;
+                    }
+
                 }
             }
             catch
@@ -118,6 +134,7 @@ namespace DietApp
                 MessageBox.Show("Please check the number inputs and try again");
                 return;
             }
+
             //try
             {
                 var diet = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text;
