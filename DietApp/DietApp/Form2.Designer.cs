@@ -50,10 +50,10 @@
             this.radioButton1.Location = new System.Drawing.Point(363, 72);
             this.radioButton1.MaximumSize = new System.Drawing.Size(600, 128);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(320, 35);
+            this.radioButton1.Size = new System.Drawing.Size(281, 35);
             this.radioButton1.TabIndex = 1;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Register new patient";
+            this.radioButton1.Text = "Register new user";
             this.radioButton1.UseVisualStyleBackColor = false;
             // 
             // radioButton2

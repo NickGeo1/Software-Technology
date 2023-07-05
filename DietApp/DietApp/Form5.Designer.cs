@@ -924,6 +924,9 @@
             this.checkBox11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBox11.AutoSize = true;
             this.checkBox11.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox11.Checked = true;
+            this.checkBox11.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox11.Enabled = false;
             this.checkBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox11.Location = new System.Drawing.Point(62, 20);
             this.checkBox11.Name = "checkBox11";
@@ -962,6 +965,9 @@
             this.checkBox12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBox12.AutoSize = true;
             this.checkBox12.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox12.Checked = true;
+            this.checkBox12.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox12.Enabled = false;
             this.checkBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox12.Location = new System.Drawing.Point(62, 61);
             this.checkBox12.Name = "checkBox12";
@@ -988,6 +994,9 @@
             this.checkBox13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBox13.AutoSize = true;
             this.checkBox13.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox13.Checked = true;
+            this.checkBox13.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox13.Enabled = false;
             this.checkBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox13.Location = new System.Drawing.Point(62, 102);
             this.checkBox13.Name = "checkBox13";
@@ -1014,6 +1023,9 @@
             this.checkBox14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBox14.AutoSize = true;
             this.checkBox14.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox14.Checked = true;
+            this.checkBox14.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox14.Enabled = false;
             this.checkBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox14.Location = new System.Drawing.Point(62, 143);
             this.checkBox14.Name = "checkBox14";
@@ -1084,7 +1096,7 @@
             this.label13.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(1268, 673);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 16);
+            this.label13.Size = new System.Drawing.Size(70, 16);
             this.label13.TabIndex = 57;
             this.label13.Text = "Register";
             // 
@@ -1293,7 +1305,7 @@
             this.label16.Font = new System.Drawing.Font("Stencil", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(1204, 673);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(43, 16);
+            this.label16.Size = new System.Drawing.Size(44, 16);
             this.label16.TabIndex = 62;
             this.label16.Text = "Menu";
             // 

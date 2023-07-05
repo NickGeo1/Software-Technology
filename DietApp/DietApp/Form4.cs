@@ -50,7 +50,7 @@ namespace DietApp
                 else //nutritionist register by nutritionist (TODO)
                 {
                     Diet.active_user.registerNewnutritionist(textBox4.Text, textBox1.Text, textBox2.Text,textBox3.Text);
-                    MessageBox.Show("Patient " + textBox4.Text + " successfuly registered!");
+                    MessageBox.Show("Nutritionist " + textBox4.Text + " successfuly registered!");
 
                     flag = false;
                     new Form2().Show();
