@@ -99,6 +99,25 @@ namespace DietApp
                 MessageBox.Show("There is not any registered patient with this id yet");
                 return;
             }
+
+            // check num values
+            double num;
+
+            try
+            {
+                foreach(MaskedTextBox mt in Controls.OfType<MaskedTextBox>())
+                {
+                    if (!mt.Name.Equals("maskedTextBox2"))
+                    {
+                        num = Double.Parse(mt.Text); //try casting to double
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Please check the number inputs and try again");
+                return;
+            }
             //try
             {
                 var diet = panel1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text;

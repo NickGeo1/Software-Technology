@@ -206,6 +206,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.BackColor = System.Drawing.Color.Transparent;
             this.radioButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("Georgia", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.Location = new System.Drawing.Point(85, 20);
             this.radioButton1.Name = "radioButton1";
@@ -225,7 +226,6 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(88, 35);
             this.radioButton2.TabIndex = 7;
-            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Keto";
             this.radioButton2.UseVisualStyleBackColor = false;
             // 
@@ -239,7 +239,6 @@
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(162, 35);
             this.radioButton3.TabIndex = 8;
-            this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Vegetarian";
             this.radioButton3.UseVisualStyleBackColor = false;
             // 
@@ -253,7 +252,6 @@
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(107, 35);
             this.radioButton4.TabIndex = 9;
-            this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Vegan";
             this.radioButton4.UseVisualStyleBackColor = false;
             // 
@@ -267,7 +265,6 @@
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(170, 35);
             this.radioButton5.TabIndex = 10;
-            this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Keto Vegan";
             this.radioButton5.UseVisualStyleBackColor = false;
             // 
@@ -281,7 +278,6 @@
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(171, 35);
             this.radioButton6.TabIndex = 11;
-            this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Pescatarian";
             this.radioButton6.UseVisualStyleBackColor = false;
             // 
@@ -295,7 +291,6 @@
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(183, 35);
             this.radioButton7.TabIndex = 12;
-            this.radioButton7.TabStop = true;
             this.radioButton7.Text = "Lactose Free";
             this.radioButton7.UseVisualStyleBackColor = false;
             // 
@@ -309,7 +304,6 @@
             this.radioButton8.Name = "radioButton8";
             this.radioButton8.Size = new System.Drawing.Size(174, 35);
             this.radioButton8.TabIndex = 13;
-            this.radioButton8.TabStop = true;
             this.radioButton8.Text = "Gluten Free";
             this.radioButton8.UseVisualStyleBackColor = false;
             // 
@@ -323,7 +317,6 @@
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.Size = new System.Drawing.Size(98, 35);
             this.radioButton9.TabIndex = 14;
-            this.radioButton9.TabStop = true;
             this.radioButton9.Text = "Paleo";
             this.radioButton9.UseVisualStyleBackColor = false;
             // 
@@ -337,7 +330,6 @@
             this.radioButton10.Name = "radioButton10";
             this.radioButton10.Size = new System.Drawing.Size(211, 35);
             this.radioButton10.TabIndex = 15;
-            this.radioButton10.TabStop = true;
             this.radioButton10.Text = "Mediterranean";
             this.radioButton10.UseVisualStyleBackColor = false;
             // 
@@ -813,7 +805,6 @@
             this.radioButton12.Name = "radioButton12";
             this.radioButton12.Size = new System.Drawing.Size(180, 35);
             this.radioButton12.TabIndex = 31;
-            this.radioButton12.TabStop = true;
             this.radioButton12.Text = "Weight Gain";
             this.radioButton12.UseVisualStyleBackColor = false;
             // 
@@ -827,7 +818,6 @@
             this.radioButton13.Name = "radioButton13";
             this.radioButton13.Size = new System.Drawing.Size(209, 35);
             this.radioButton13.TabIndex = 32;
-            this.radioButton13.TabStop = true;
             this.radioButton13.Text = "Healthy Eating";
             this.radioButton13.UseVisualStyleBackColor = false;
             // 
@@ -848,6 +838,7 @@
             this.radioButton11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radioButton11.AutoSize = true;
             this.radioButton11.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton11.Checked = true;
             this.radioButton11.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton11.Location = new System.Drawing.Point(0, 0);
             this.radioButton11.Name = "radioButton11";
