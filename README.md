@@ -1,33 +1,36 @@
-# Software-Technology
-Repository for the project during Software Technology Course, 3rd year, Unipi, Dep of Informatics, 2023
+# DietApp
 
-## Tasks
-Diagram assigned Tasks:
+A desktop-based C# application for personalized diet planning and tracking, designed for use by nutritionists and patients.
 
-### @NickGeo1
-1. Usecase Diagram - Inception
-2. Class Diageam - Inception
-3. Usecase Diagram - Elaboration
-4. Class Diageam - Elaboration
-5. Usecase Diagram - Construction
-6. Class Diageam - Construction
+## 🛠 Technologies Used
 
-### Collaborator 2
-1. Object Diagram - Elaboration
-2. Object Diagram - Construction
-3. Collaboration Diagram - Elaboration
-4. Collaboration Diageam - Construction
-5. Sequence Diagram - Elaboration
+- **C# (WinForms)** – Core application logic and UI
+- **.NET Framework** – Application platform
+- **Local Database** – Stores user data and meal plans
+- **Visual Studio** – Development and runtime environment
 
-### Collaborator 3
-1. Activity Diagram - Elaboration
-2. Activity Diageam - Construction
-3. State Diagram - Elaboration
-4. State Diageam - Construction
-5. Sequence Diagram - Construction
+> 💻 **Supported on:** Windows laptops/PCs
 
-### Collaborator 4
-1. Component Diagram - Elaboration
-2. Component Diageam - Construction
-3. Distribution Diagram - Elaboration
-4. Distribution Diageam - Construction
+## ✅ Features
+
+### 👩‍⚕️ For Nutritionists
+- Register new patients and fellow nutritionists
+- Create customized diet plans based on:
+  - Age, weight, height (BMI calculation)
+  - Allergies, food preferences, diseases
+  - Desired meal frequency and plan duration
+- Search for patient info using ID or AMKA
+- View and manage weekly diet schedules
+
+### 👤 For Patients
+- Access personal diet program by entering their ID
+- View detailed weekly meal plan (breakfast, lunch, snacks, dinner)
+
+## 🔐 Authentication
+
+- Nutritionists: Login with unique 6-digit ID and password
+- Patients: Access program using only their ID (no password required)
+
+> ℹ️ DietApp was made during the course "Software Technology"
+
+
