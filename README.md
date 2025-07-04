@@ -6,7 +6,7 @@ A desktop-based C# application for personalized diet planning and tracking, desi
 
 - **C# (WinForms)** – Core application logic and UI
 - **.NET Framework** – Application platform
-- **Local Database** – Stores user data and meal plans
+- **Local MySql Database** – Stores user data and meal plans
 - **Visual Studio** – Development and runtime environment
 
 > 💻 **Supported on:** Windows laptops/PCs
